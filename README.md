@@ -95,7 +95,6 @@ The project follows a clean, domain-driven architecture to ensure separation of 
 src/
 ├── application/    # Application logic, use cases, DTOs
 ├── assets/         # Static assets like images and fonts
-├── components/     # Shared UI components (built with shadcn/ui)
 ├── domain/         # Core domain entities, repositories, and business rules
 ├── lib/            # Utility functions
 ├── presentation/   # React components, pages, hooks, and state (BLoC, context)
