@@ -3,7 +3,7 @@ import type { ProductEntity } from "../Entities/Product";
 import type { Result } from "../Types/Result";
 
 export interface OrderRepository {
-  createOrder(consumerId: number): Promise<Result<void, Error>>;
+  createOrder(): Promise<Result<void, Error>>;
 
   addProductToTheOrder(
     product: ProductEntity

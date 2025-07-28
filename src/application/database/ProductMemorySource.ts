@@ -7,7 +7,7 @@ import type { ProductRepository } from "../../domain/repository/ProductRepositor
 import type { RESULT } from "../../domain/Types";
 import { failure, success } from "../../domain/Types/Result";
 
-export class MemoryStorage implements ProductRepository {
+export class ProductMemoryStorage implements ProductRepository {
   private product: ProductEntity[] = [
     {
       id: 1,
@@ -16,7 +16,7 @@ export class MemoryStorage implements ProductRepository {
       unit: 10,
       name: "Caviar",
       category: "Rare",
-      unitOnCart:0
+      unitOnCart: 0,
     },
     {
       id: 2,
@@ -25,7 +25,7 @@ export class MemoryStorage implements ProductRepository {
       unit: 2,
       name: "Fugu",
       category: "Toxique",
-        unitOnCart:0
+      unitOnCart: 0,
     },
     {
       id: 3,
@@ -34,7 +34,7 @@ export class MemoryStorage implements ProductRepository {
       unit: 20,
       name: "Ramen",
       category: "Japon",
-       unitOnCart:0
+      unitOnCart: 0,
     },
     {
       id: 4,
@@ -43,7 +43,7 @@ export class MemoryStorage implements ProductRepository {
       unit: 20,
       name: "Frampay",
       category: "gasy",
-       unitOnCart:0
+      unitOnCart: 0,
     },
     {
       id: 5,
@@ -52,7 +52,7 @@ export class MemoryStorage implements ProductRepository {
       unit: 20,
       name: "Dragon",
       category: "chinoise",
-       unitOnCart:0
+      unitOnCart: 0,
     },
     {
       id: 6,
@@ -61,7 +61,7 @@ export class MemoryStorage implements ProductRepository {
       unit: 20,
       name: "Nezuko",
       category: "Japon",
-       unitOnCart:0
+      unitOnCart: 0,
     },
     {
       id: 7,
@@ -70,7 +70,7 @@ export class MemoryStorage implements ProductRepository {
       unit: 20,
       name: "Vary",
       category: "gasy",
-       unitOnCart:0
+      unitOnCart: 0,
     },
     {
       id: 8,
@@ -79,7 +79,7 @@ export class MemoryStorage implements ProductRepository {
       unit: 20,
       name: "Ra tsy men",
       category: "gasy",
-       unitOnCart:0
+      unitOnCart: 0,
     },
     {
       id: 9,
@@ -88,7 +88,7 @@ export class MemoryStorage implements ProductRepository {
       unit: 20,
       name: "Tortue genial",
       category: "wtf",
-       unitOnCart:0
+      unitOnCart: 0,
     },
     {
       id: 10,
@@ -97,7 +97,7 @@ export class MemoryStorage implements ProductRepository {
       unit: 20,
       name: "Kamehameha",
       category: "wtf",
-      unitOnCart:0
+      unitOnCart: 0,
     },
     {
       id: 11,
@@ -106,16 +106,16 @@ export class MemoryStorage implements ProductRepository {
       unit: 20,
       name: "Wendy Cathalina",
       category: "gasy",
-       unitOnCart:0
+      unitOnCart: 0,
     },
     {
       id: 12,
       producerId: 11,
       price: 5000,
       unit: 20,
-      name: "Mémé Turbo",
+      name: "Mémé tsy Turbo",
       category: "wtf",
-       unitOnCart:0
+      unitOnCart: 0,
     },
     {
       id: 13,
@@ -124,7 +124,7 @@ export class MemoryStorage implements ProductRepository {
       unit: 20,
       name: "Turbo",
       category: "wtf",
-       unitOnCart:0
+      unitOnCart: 0,
     },
     {
       id: 14,
@@ -133,7 +133,7 @@ export class MemoryStorage implements ProductRepository {
       unit: 20,
       name: "Carotte",
       category: "legume",
-       unitOnCart:0
+      unitOnCart: 0,
     },
   ]; // Fake Data
 

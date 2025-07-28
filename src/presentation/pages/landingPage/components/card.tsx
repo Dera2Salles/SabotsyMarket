@@ -83,6 +83,7 @@ export const CardProduct: React.FC<CardProductProps> = ({ product }) => {
         <div className=" flex justify-center w-full ">
           {productInCart ? (
             <QuantityControl
+              item={product}
               quantity={productInCart.unitOnCart}
               onIncrease={() => bloc.addProducToTheOrder(product)}
               onDecrease={() => {}}

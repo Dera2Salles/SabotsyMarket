@@ -6,60 +6,40 @@ import {
   insertOneProductUseCase,
   createAnOrderUseCase,
   addProductToTheOrderUseCase,
+  filterAndSortProduct,
+  findUserUseCase,
 } from "@/injection";
 
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
-import { leveinshtein_distance } from "../utils/leveinshtein";
-
 import { debounce } from "lodash";
+import type { UserEntity } from "@/domain/Entities/User";
 
 export const useProductBloc = () => {
   const [productList, setProductList] = useState<ProductEntity[]>([]);
-  const [description, setDescription] = useState<string>("");
+  const [user, setUser] = useState<UserEntity | null>(null);
   const [productOnOrder, setProductOnOrder] = useState<OrderEntity>();
   const [filterCategory, setFilterCategory] = useState<string>("All");
+  const [userId, setUserId] = useState<number | null>(null);
   const [searchTerm, setSearch] = useState<string>("");
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState<string>("");
 
-  useEffect(() => {
-    const search = debounce(() => {
-      setDebouncedSearchTerm(searchTerm);
-    }, 300);
+  const findUser = async (navigate: (path: string) => void) => {
+    const result = await findUserUseCase.execute(userId as number);
+    if (result.status === "failure")
+      return toast.error("Error", { description: "user not found" });
+    setUser(result.data);
+    toast.success("Succes", { description: "User found" });
 
-    search();
+    console.log(result.data.nom);
+    navigate("/dashboard");
+  };
 
-    return () => {
-      search.cancel();
-    };
-  }, [searchTerm]);
-
-  const productListFiltered: ProductEntity[] = productList
-    .filter((item) => {
-      const categoryMatch =
-        !filterCategory ||
-        filterCategory.toLowerCase() === "all" ||
-        item.category.toLowerCase() === filterCategory.toLowerCase();
-      return categoryMatch;
-    })
-    .map((item) => {
-      const diff = leveinshtein_distance(
-        item.name.toLowerCase(),
-        debouncedSearchTerm.toLowerCase()
-      );
-      return { ...item, diff };
-    })
-    .filter((item) => {
-      if (debouncedSearchTerm === "") return true;
-      const threshold = debouncedSearchTerm.length / 2;
-      return item.diff <= threshold;
-    })
-    .sort((a, b) => {
-      if (a.diff !== b.diff) {
-        return a.diff - b.diff;
-      }
-      return a.name.localeCompare(b.name);
-    });
+  const productListFiltered: ProductEntity[] = filterAndSortProduct.execute({
+    products: productList,
+    searchTerm: debouncedSearchTerm,
+    category: filterCategory,
+  });
 
   const totalItemUnitOnOrder: number | undefined =
     productOnOrder?.OrderItems.reduce(
@@ -123,12 +103,22 @@ export const useProductBloc = () => {
     callFetchProduct();
   }, []);
 
+  useEffect(() => {
+    const search = debounce(() => {
+      setDebouncedSearchTerm(searchTerm);
+    }, 300);
+
+    search();
+
+    return () => {
+      search.cancel();
+    };
+  }, [searchTerm]);
+
   return {
     productList,
     fetchProduct,
     addNewProduct,
-    description,
-    setDescription,
     createAnOrder,
     addProducToTheOrder,
     productOnOrder,
@@ -138,5 +128,9 @@ export const useProductBloc = () => {
     setFilterCategory,
     setSearch,
     filterCategory,
+    userId,
+    setUserId,
+    findUser,
+    user,
   };
 };

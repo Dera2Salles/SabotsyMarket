@@ -1,6 +1,8 @@
 import { AvatarProducer } from "./avatar";
+import { useProductContext } from "../../../hooks/useProduct";
 
 export const NavBar = () => {
+  const bloc = useProductContext();
   return (
     <div className="fixed z-50 w-full">
       <div className="  bg-green-700 flex flex-row  justify-between">
@@ -16,7 +18,7 @@ export const NavBar = () => {
 
           <div className="flex flex-row justify-center items-center gap-5 ">
             <p className=" text-white font-semibold text-xl flex flex-row gap-1 ">
-              Welcome, Rakoto
+              Welcome, {bloc?.user?.nom} ato
             </p>
             <AvatarProducer />
           </div>

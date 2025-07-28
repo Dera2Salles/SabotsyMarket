@@ -1,7 +1,7 @@
-import { OrderRepositoryImpl } from "../../repository/OrderRepositoryImpl";
+import type { OrderRepository } from "@/domain/repository/OrderRepository";
 
 export class CreateAnOrder {
-  constructor(private repository: OrderRepositoryImpl) {}
+  constructor(private repository: OrderRepository) {}
 
   async execute() {
     return await this.repository.createOrder();

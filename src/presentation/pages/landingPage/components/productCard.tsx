@@ -22,7 +22,7 @@ export const ProductCardList = () => {
         <div className=" flex flex-col pb-6 ">
           <div className=" flex flex-row justify-between  items-center gap-4 ">
             <p className="  font-bold text-green-700 lg:text-4xl sm:text-4xl">
-              Featured product
+              Featured product {bloc.user}
             </p>
             <div className=" translate-x-20  relative flex justify-between items-center w-1/7 ">
               <input

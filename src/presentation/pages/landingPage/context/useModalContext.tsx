@@ -7,7 +7,7 @@ export const ModalContext = createContext<ReturnType<typeof useModal> | null>(
 
 export const useModalContext = () => {
   const context = useContext(ModalContext);
-  if (!context) throw new Error("Modal context must be initialized eto");
+  if (!context) throw new Error("Modal context must be initialized");
 
   return context;
 };

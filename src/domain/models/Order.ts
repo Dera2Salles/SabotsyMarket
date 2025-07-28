@@ -76,7 +76,6 @@ export class OrderModel {
     return success(undefined);
   }
 
-  
   async removeProductToTheOrder(
     productId: number
   ): Promise<Result<void, Error>> {

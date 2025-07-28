@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { AttachMoney } from "@mui/icons-material";
 
 import {
   Card,
@@ -7,7 +8,7 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 
-import { MdCancel, MdPayment } from "react-icons/md";
+import { MdCancel, MdPayment, MdShoppingCart } from "react-icons/md";
 import { CartRow } from "./CartRow";
 import { useProductContext } from "@/presentation/hooks/useProduct";
 import type { ProductEntity } from "@/domain/Entities/Product";
@@ -21,17 +22,17 @@ export const ProductListOnCart = () => {
     bloc?.productOnOrder?.OrderItems;
 
   return (
-    <Card className="w-5xl hover:shadow-2xl shadow-gray-500 transition-all duration-500">
-      <CardHeader className=" relative justify-center">
-        <p className=" text-green-700 font-bold text-3xl">
-          Your product on the cart
-        </p>
+    <Card className="w-5xl hover:shadow-2xl shadow-gray-500 transition-all gap-0 pt-0 duration-500">
+      <CardHeader className=" relative justify-center bg-green-700 rounded-t-2xl">
+        <div className=" text-white font-bold text-8xl py-10">
+          <MdShoppingCart />
+        </div>
         <MdCancel
           onClick={closeProductListOnCart}
-          className=" text-gray-500 text-3xl absolute left-5 hover:text-gray-500/90 hover:scale-125 transition-all duration-300"
+          className=" text-white text-4xl absolute -left-10 -top-10  hover:scale-125 transition-all duration-300"
         />
       </CardHeader>
-      <CardContent className="flex flex-col gap-3 ">
+      <CardContent className=" relative flex flex-col gap-3 bg-white rounded-t-4xl pt-10 -top-8 ">
         {productOnOrderList && productOnOrderList.length != 0 ? (
           <ScrollArea className="flex h-150 px-4">
             <div className="flex flex-col w-full gap-4">
@@ -47,19 +48,21 @@ export const ProductListOnCart = () => {
         )}
       </CardContent>
       <CardFooter className="flex justify-between items-center">
-        <p className="text-xl font-bold">
-          Total: {bloc.productOnOrder?.OrderItemsTotalPrice?.toFixed(2) || "0.00"} MGA
-        </p>
         {productOnOrderList && productOnOrderList.length != 0 ? (
-          <Button
-            className=" bg-green-700 hover:bg-green-900 "
-            //   onClick={addNewProduct}
-          >
-            <div className=" flex  py-2 px-4 justify-center items-center gap-1">
-              <MdPayment className=" text-3xl" />{" "}
-              <p className=" text-xl">Purchase</p>
+          <div className=" flex w-full justify-between">
+            <div className="text-xl font-bold">
+              <AttachMoney fontSize="large" className="text-yellow-500" />{" "}
+              Total:{" "}
+              {bloc.productOnOrder?.OrderItemsTotalPrice?.toFixed(2) || "0.00"}{" "}
+              MGA
             </div>
-          </Button>
+            <Button className=" bg-green-700 hover:bg-green-900 ">
+              <div className=" flex  py-2 px-4 justify-center items-center gap-1">
+                <MdPayment className=" text-3xl" />{" "}
+                <p className=" text-xl">Purchase</p>
+              </div>
+            </Button>
+          </div>
         ) : null}
       </CardFooter>
     </Card>

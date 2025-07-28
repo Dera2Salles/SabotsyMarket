@@ -15,7 +15,7 @@ interface CardProductProps {
 export const CartRow: React.FC<CardProductProps> = ({ product }) => {
   const bloc = useProductContext();
   return (
-    <div className="w-full bg-card  text-card-foreground items-center justify-between  flex flex-row gap-10 rounded-xl border py-5 px-5 shadow-2xs">
+    <div className="w-full bg-card  text-card-foreground items-center justify-between  flex flex-row gap-10 rounded-4xl border-4 py-5 px-5 shadow-2xs">
       <div className=" flex gap-15">
         <div className="flex">
           <img src={food} alt="food image" className="size-45 rounded-2xl" />
@@ -56,6 +56,7 @@ export const CartRow: React.FC<CardProductProps> = ({ product }) => {
         </div>
       </div>
       <QuantityControl
+        item={product}
         quantity={product.unitOnCart}
         onIncrease={() => bloc.addProducToTheOrder(product)}
         onDecrease={() => bloc.addProducToTheOrder(product)}

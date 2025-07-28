@@ -4,11 +4,9 @@ import { DashboardProvider } from "./context/useDashboardProvider";
 
 export const ProducerDashboardPage = () => {
   return (
-    <>
+    <DashboardProvider>
       <NavBar />
-      <DashboardProvider>
-        <DashboardLayout />
-      </DashboardProvider>
-    </>
+      <DashboardLayout />
+    </DashboardProvider>
   );
 };

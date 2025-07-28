@@ -1,16 +1,12 @@
-import { LandingPage } from "./presentation/pages/landingPage";
 import { ProductProvider } from "./presentation/context/productProvider";
 import { NotificationWithTimer } from "./components/ui/notification";
-import { ProducerDashboardPage } from "./presentation/pages/ProducerDashBoard";
-import { Login } from "./presentation/pages/Login";
+import { PageRoutes } from "./presentation/routes";
 
 const App = () => {
   return (
     <div className=" bg-zinc-100 min-h-auto">
       <ProductProvider>
-        <LandingPage />
-        <ProducerDashboardPage />
-        <Login/>
+        <PageRoutes />
       </ProductProvider>
       <NotificationWithTimer />
     </div>
