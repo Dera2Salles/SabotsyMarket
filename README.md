@@ -60,7 +60,7 @@ To get a local copy up and running, follow these simple steps.
     ```
 2.  **Navigate to the project directory:**
     ```sh
-    cd LocalHarvest_Hub_frontEnd
+    cd SabotsyMarket
     ```
 3.  **Install NPM packages:**
     ```sh
