@@ -1,6 +1,6 @@
 <div align="center">
   <img src="src/assets/logo.png" alt="LocalHarvest Hub Logo" width="150">
-  <h1>LocalHarvest Hub</h1>
+  <h1>SabotsyMarket</h1>
   <p>
     A modern, feature-rich web platform connecting local producers with fresh-food enthusiasts.
   </p>
