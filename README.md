@@ -16,7 +16,7 @@
 
 ## 🌟 About The Project
 
-**LocalHarvest Hub** is an e-commerce application designed to bridge the gap between local farmers, artisans, and consumers. It provides a beautiful, intuitive, and responsive marketplace for discovering and purchasing local goods.
+**SabotsyMarket** is an e-commerce application designed to bridge the gap between local farmers,and consumers. It provides a beautiful, intuitive, and responsive marketplace for discovering and purchasing local goods.
 
 The entire application is built with a focus on clean architecture, scalability, and a high-quality user experience, making the codebase as impressive under the hood as it is on the screen.
 
@@ -27,7 +27,7 @@ The entire application is built with a focus on clean architecture, scalability,
 - **Producer Dashboards**: A dedicated space for producers to manage their product listings, track inventory, and view orders.
 - **Modern, Responsive UI**: Crafted with **shadcn/ui**, **Tailwind CSS**, and **Framer Motion** for a sleek, accessible, and animated user experience on any device.
 - **Robust Architecture**: Built using Domain-Driven Design (DDD) principles with a clear separation of concerns (`domain`, `application`, `presentation`), and Dependency Injection with **InversifyJS** for a truly decoupled and testable codebase.
-- **Advanced State Management**: Utilizes a combination of **Zustand** and **Redux Toolkit** for efficient and scalable state handling.
+- **Advanced State Management**: Context API for state handling.
 - **Seamless Cart & Checkout**: An easy-to-use shopping cart and a streamlined ordering process.
 
 ## 🛠️ Tech Stack
@@ -37,9 +37,8 @@ This project is built with a modern and powerful tech stack:
 - **Core**: React, TypeScript, Vite
 - **Styling**: Tailwind CSS, shadcn/ui, Radix UI
 - **Routing**: React Router
-- **State Management**: Zustand, Redux Toolkit
+- **State Management**: Context API
 - **Forms**: React Hook Form with Zod for validation
-- **Dependency Injection**: InversifyJS
 - **Animation**: Framer Motion, AOS
 - **Icons**: Lucide React
 - **Linting/Formatting**: ESLint
@@ -57,7 +56,7 @@ To get a local copy up and running, follow these simple steps.
 
 1.  **Clone the repository:**
     ```sh
-    git clone https://github.com/your-username/LocalHarvest_Hub_frontEnd.git
+    git clone https://github.com/Dera2Salles/SabotsyMarket.git
     ```
 2.  **Navigate to the project directory:**
     ```sh
