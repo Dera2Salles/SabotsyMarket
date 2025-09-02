@@ -1,26 +1,36 @@
-import { ProductMemoryStorage } from "./application/database/ProductMemorySource";
-import { UserMemoryStorage } from "./application/database/UserMemoryStorage";
-import { OrderRepositoryImpl } from "./application/repository/OrderRepositoryImpl";
 import { ProductRepositoryImp } from "./application/repository/ProductRepository";
-import { UserRepositoryImp } from "./application/repository/UserRepository";
-import { AddProductToTheOrder } from "./application/use-cases/Order/addProductOrder";
-import { CreateAnOrder } from "./application/use-cases/Order/createAnOrder";
-import { RemoveProductOrder } from "./application/use-cases/Order/removeProduct";
-import { FilterAndSortProductsUseCase } from "./application/use-cases/Product/FilterAndSortProducts";
+
 import { GetAllProduct } from "./application/use-cases/Product/GetAllProduct";
 import { GetOneProduct } from "./application/use-cases/Product/GetOneProduct";
 import { InsertManyProduct } from "./application/use-cases/Product/InsertManyProduct";
-import { InsertOneProduct } from "./application/use-cases/Product/insertOneProduct";
-import { FindUserUseCase } from "./application/use-cases/User/findUser";
+import { ProductRemoteDataSource } from "./application/datasources/product_remote_data_source";
+import axios from "axios";
+import { AddProductToTheOrder } from "./application/use-cases/Order/addProductOrder";
+import { OrderRepositoryImpl } from "./application/repository/OrderRepositoryImpl";
+import { CreateAnOrder } from "./application/use-cases/Order/createAnOrder";
+import { RemoveProductOrder } from "./application/use-cases/Order/removeProduct";
+import { AuthServiceImpl } from "./application/auth_service";
+import { LoginUseCase } from "./application/use-cases/User/login";
+import { AuthRepositoryImpl } from "./application/repository/AuthRepository";
+import { SendFile } from "./application/use-cases/Product/senFiles";
+
+const api = axios.create({
+  timeout: 5000,
+});
+
+const autService = new AuthServiceImpl(api);
+
+const autRepository = new AuthRepositoryImpl(autService);
+
+export const findUserUseCase = new LoginUseCase(autRepository);
 
 // Database
-const productMemoryStorage = new ProductMemoryStorage();
-const userMemoryStorage = new UserMemoryStorage();
+const productServerSource = new ProductRemoteDataSource(api);
 
 // Repositories
-const productRepository = new ProductRepositoryImp(productMemoryStorage);
-const orderRepository = new OrderRepositoryImpl(productMemoryStorage);
-const userRepository = new UserRepositoryImp(userMemoryStorage);
+const productRepository = new ProductRepositoryImp(productServerSource);
+
+const orderRepository = new OrderRepositoryImpl();
 
 // Product Use Cases
 export const getAllProductUseCase = new GetAllProduct(productRepository);
@@ -28,9 +38,7 @@ export const getOneProductUseCase = new GetOneProduct(productRepository);
 export const insertManyProductUseCase = new InsertManyProduct(
   productRepository
 );
-export const insertOneProductUseCase = new InsertOneProduct(productRepository);
-
-// Order Use Cases
+export const sendFilesUseCase = new SendFile(productRepository);
 export const addProductToTheOrderUseCase = new AddProductToTheOrder(
   orderRepository
 );
@@ -39,6 +47,4 @@ export const removeProductOrderUseCase = new RemoveProductOrder(
   orderRepository
 );
 
-export const findUserUseCase = new FindUserUseCase(userRepository);
-
-export const filterAndSortProduct = new FilterAndSortProductsUseCase();
+// export const findUserUseCase = new FindUserUseCase(userRepository);
