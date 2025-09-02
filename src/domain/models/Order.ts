@@ -8,10 +8,23 @@ export class OrderModel {
 
   createOrder(): void {
     this.order = {
-      status: "Pending",
+      status: "Placed",
       OrderItems: [],
       OrderItemsTotalPrice: 0,
+      OrderTotalItemUnit: 0,
     };
+  }
+
+  calculateTotalItemUnit(): Result<void, Error> {
+    if (!this.order) {
+      return failure(new Error("Order not initialized"));
+    }
+
+    this.order.OrderTotalItemUnit = this.order.OrderItems.reduce(
+      (total, item) => total + item.unitOnCart,
+      0
+    );
+    return success(undefined);
   }
 
   private async calculateTotal(): Promise<Result<void, Error>> {
@@ -38,12 +51,12 @@ export class OrderModel {
 
     if (isProductOnCart !== -1) {
       this.order.OrderItems[isProductOnCart].unitOnCart += 1;
-      await this.calculateTotal();
-      return success(undefined);
+    } else {
+      productToAdd.unitOnCart = 1;
+      this.order.OrderItems.push(productToAdd);
     }
-    productToAdd.unitOnCart = 1;
-    this.order.OrderItems.push(productToAdd);
 
+    this.calculateTotalItemUnit();
     await this.calculateTotal();
     return success(undefined);
   }
@@ -56,28 +69,28 @@ export class OrderModel {
     }
 
     const isProductOnCart = this.order.OrderItems.findIndex(
-      (item) => item.name == product.name
+      (item) => item.id == product.id
     );
 
     if (isProductOnCart !== -1) {
-      let productUnitOnOrder =
+      const productUnitOnOrder =
         this.order.OrderItems[isProductOnCart].unitOnCart;
+      if (productUnitOnOrder != 1) {
+        this.order.OrderItems[isProductOnCart].unitOnCart -= 1;
+      } else {
+        this.removeProductToTheOrder(product.id);
+      }
 
-      if (productUnitOnOrder != 0) productUnitOnOrder -= 1;
-
+      this.calculateTotalItemUnit();
       await this.calculateTotal();
 
       return success(undefined);
     }
-    product.unitOnCart = 1;
-    this.order.OrderItems.push(product);
-
-    await this.calculateTotal();
-    return success(undefined);
+    return failure(Error());
   }
 
   async removeProductToTheOrder(
-    productId: number
+    productId: string
   ): Promise<Result<void, Error>> {
     if (!this.order) {
       return failure(new Error("Order not initialized"));
@@ -101,7 +114,6 @@ export class OrderModel {
     }
     return success({
       ...this.order,
-      OrderItemsTotalPrice: this.order.OrderItemsTotalPrice,
     });
   }
 

@@ -1,19 +1,17 @@
 import type { Result } from "./../Types/Result";
 import type { ProductEntity } from "../Entities/Product";
-import { ProductNotFoundException } from "../Exceptions";
+import type { addProductDto } from "@/application/datasources/product_remote_data_source";
 
-export interface ProductRepository {
-  insertOne(product: ProductEntity): Promise<Result<void, Error>>;
+export abstract class ProductRepository {
+  abstract add(product: ProductEntity[]): Promise<Result<void>>;
 
-  insertMany(product: ProductEntity[]): Promise<Result<void, Error>>;
+  abstract getAll(): Promise<Result<ProductEntity[]>>;
 
-  getAll(): Promise<Result<ProductEntity[], Error>>;
+  abstract getOneByName(data: addProductDto): Promise<Result<ProductEntity>>;
 
-  getOneByName(
-    productName: string
-  ): Promise<Result<ProductEntity, ProductNotFoundException>>;
+  abstract update(product: ProductEntity): Promise<Result<void>>;
 
-  update(product: ProductEntity): Promise<Result<void, Error>>;
+  abstract sendFiles(file: FormData): Promise<Result<void>>;
 
   // deleteOneById(productId: number): Promise<Result<void>>;
 }

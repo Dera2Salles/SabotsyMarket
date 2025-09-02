@@ -9,5 +9,7 @@ export interface OrderRepository {
     product: ProductEntity
   ): Promise<Result<OrderEntity, Error>>;
 
-  removeProductToTheOrder(productId: number): Promise<Result<void, Error>>;
+  removeProductToTheOrder(
+    product: ProductEntity
+  ): Promise<Result<OrderEntity, Error>>;
 }

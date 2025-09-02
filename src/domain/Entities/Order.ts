@@ -7,4 +7,5 @@ export interface OrderEntity {
   status: OrderStatus;
   OrderItems: ProductEntity[];
   OrderItemsTotalPrice: number;
+  OrderTotalItemUnit: number;
 }

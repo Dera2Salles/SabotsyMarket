@@ -1,9 +1,11 @@
 export interface ProductEntity {
-  id: number;
-  producerId: number;
+  id?: string;
+  producerId: string;
   price: number;
   unit: number;
-  unitOnCart: number;
+  unitOnCart?: number;
   name: string;
   category: string;
+  image?: string;
+  description: string;
 }
