@@ -5,6 +5,6 @@ export class InsertManyProduct {
   constructor(private repository: ProductRepository) {}
 
   async execute(product: ProductEntity[]) {
-    return this.repository.insertMany(product);
+    return this.repository.add(product);
   }
 }
