@@ -5,7 +5,8 @@ import { useModalContext } from "../context/useModalContext";
 export const CartIconCounter = () => {
   const { openProductListOnCart } = useModalContext();
   const bloc = useProductContext();
-  const itemCount: number | undefined = bloc?.totalItemUnitOnOrder;
+  const itemCount: number | undefined =
+    bloc?.productOnOrder?.OrderTotalItemUnit;
 
   return (
     <div className="relative cursor-pointer" onClick={openProductListOnCart}>

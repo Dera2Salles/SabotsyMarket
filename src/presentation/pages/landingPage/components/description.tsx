@@ -1,4 +1,4 @@
-import fond from "../../../../assets/grocery.jpg";
+import fond from "../../../../assets/defaut.jpg";
 
 export const Description = () => {
   return (
@@ -13,12 +13,11 @@ export const Description = () => {
               Get organic produce and sustainably sourced <br /> groceries
               delivery at up to 4% off grocery
             </p>
-            <button className=" w-1/2 text-green-700 h-9 py-6 px-12 rounded-lg font-semibold flex justify-center items-center bg-white hover:bg-white/90 active:scale-105">
+            <button className="cursor-pointer w-1/2 text-green-700 h-9 py-6 px-12 rounded-lg font-semibold flex justify-center items-center bg-white hover:bg-white/90 active:scale-105">
               About us
             </button>
           </div>
           <img src={fond} className=" w-full object-cover" />
-          {/* <div className=" absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-white/100 to-transparent" /> */}
           <div className=" absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-black/90 via-black/30 to-transparent " />
         </div>
       </div>

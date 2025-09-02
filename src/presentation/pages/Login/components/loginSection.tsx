@@ -1,11 +1,16 @@
 import { MdLock, MdPhone } from "react-icons/md";
 import { useAuthContext } from "../context/useAuthContext";
-import { useProductBloc } from "@/presentation/bloc/productBloc";
 import { useNavigate } from "react-router-dom";
 
 export const LoginSection = () => {
-  const { activeSection, setActiveSection } = useAuthContext();
-  const { setUserId, findUser } = useProductBloc();
+  const {
+    activeSection,
+    setActiveSection,
+    setUserIdentifier,
+    setUserPassword,
+    findUser,
+  } = useAuthContext();
+
   const navigate = useNavigate();
 
   const handleLogin = () => {
@@ -33,7 +38,7 @@ export const LoginSection = () => {
 
         <input
           type="number"
-          onChange={(e) => setUserId(parseInt(e.target.value))}
+          onChange={(e) => setUserIdentifier(e.target.value)}
           placeholder="Numero de Téléphone"
           className=" pl-10 pr-3 p-y-2 flex flex-1 px-4 py-3 w-full text-lg border-2 border-gray-200 rounded-2xl focus:outline-none focus:border-gren-600 focus:ring-2 focus:ring-green-700 transition-all duration-300"
         />
@@ -42,7 +47,7 @@ export const LoginSection = () => {
         <MdLock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xl" />
 
         <input
-          // onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => setUserPassword(e.target.value)}
           type="password"
           placeholder="Mot de passe"
           className=" pl-10 pr-3 p-y-2 flex flex-1 px-4 py-3 w-full text-lg border-2 border-gray-200 rounded-2xl focus:outline-none focus:border-green-600 focus:ring-1 focus:ring-green-700 transition-all duration-300"

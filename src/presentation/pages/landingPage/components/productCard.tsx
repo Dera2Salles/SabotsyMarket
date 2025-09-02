@@ -6,10 +6,11 @@ import { MdSearch } from "react-icons/md";
 
 const buttonItem: { category: string }[] = [
   { category: "All" },
-  { category: "Rare" },
-  { category: "Toxique" },
-  { category: "Japon" },
-  { category: "gasy" },
+  { category: "Fruits" },
+  { category: "Épicerie" },
+  { category: "Boulangerie" },
+  { category: "Légumes" },
+  { category: "Produits Laitiers" },
 ];
 
 export const ProductCardList = () => {
@@ -22,12 +23,12 @@ export const ProductCardList = () => {
         <div className=" flex flex-col pb-6 ">
           <div className=" flex flex-row justify-between  items-center gap-4 ">
             <p className="  font-bold text-green-700 lg:text-4xl sm:text-4xl">
-              Featured product {bloc.user}
+              Featured product
             </p>
             <div className=" translate-x-20  relative flex justify-between items-center w-1/7 ">
               <input
                 onChange={(e) => bloc.setSearch(e.target.value)}
-                placeholder="Search you favorite food "
+                placeholder="Search your favorite food "
                 className="  border-green-700 shadow-xl  h-12 w-full pl-4 pr-11 placeholder:text-sm   text-lg border-1 bg-white rounded-4xl focus:outline-none  focus:border-green-700 focus:ring-1 focus:ring-green-900  transition-all duration-300"
               />
               <MdSearch className="absolute right-4  top-1/2 -translate-y-1/2 text-gray-400 text-3xl" />
@@ -37,7 +38,7 @@ export const ProductCardList = () => {
                 <button
                   onClick={() => bloc.setFilterCategory(item.category)}
                   key={key}
-                  className={`flex justify-center border border-green-700 rounded-4xl transition-all duration-100 ${
+                  className={`flex cursor-pointer justify-center border border-green-700 rounded-4xl transition-all duration-100 ${
                     bloc.filterCategory === item.category
                       ? "bg-green-700"
                       : "bg-white hover:bg-green-700"
@@ -57,8 +58,7 @@ export const ProductCardList = () => {
             </div>
           </div>
         </div>
-
-        <div className=" w-full flex flex-wrap gap-3">
+        <div className=" w-full flex flex-wrap gap-15">
           {productList.length == 0 ? (
             <p className=" text-gray-500 text-6xl flex justify-center w-full py-12 font-semibold">
               No result

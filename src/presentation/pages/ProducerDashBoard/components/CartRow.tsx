@@ -1,23 +1,25 @@
 import {
   MdCategory,
+  MdEdit,
   MdMonetizationOn,
   MdProductionQuantityLimits,
 } from "react-icons/md";
 import type { ProductEntity } from "@/domain/Entities/Product";
-import { useProductContext } from "@/presentation/hooks/useProduct";
-import { QuantityControl } from "./quantityControl";
 
 import defaut from "@/assets/defaut.jpg";
 
 interface CardProductProps {
   product: ProductEntity;
+  onCallBack: (product: ProductEntity) => void;
 }
 
-export const CartRow: React.FC<CardProductProps> = ({ product }) => {
-  const bloc = useProductContext();
+export const CartRow: React.FC<CardProductProps> = ({
+  product,
+  onCallBack,
+}) => {
   return (
     <div className="w-full bg-card  text-card-foreground items-center justify-between  flex flex-row gap-10 rounded-4xl border-4 py-5 px-5 shadow-2xs">
-      <div className=" flex gap-15">
+      <div className=" flex gap-15 justify-between w-full">
         <div className="flex">
           <img
             src={
@@ -58,18 +60,23 @@ export const CartRow: React.FC<CardProductProps> = ({ product }) => {
             <MdProductionQuantityLimits className=" text-yellow-500 text-2xl" />
             <div className="flex gap-1 ">
               {" "}
-              <p className="font-bold text-xl">Unit on cart : </p>
-              <p className=" text-lg">{product?.unitOnCart}</p>
+              <p className="font-bold text-xl">Unit: </p>
+              <p className=" text-lg">{product?.unit}</p>
             </div>
           </div>
         </div>
+        <div className=" flex flex-col justify-center">
+          <button
+            className=" bg-green-700 hover:bg-green-900 rounded-2xl flex"
+            onClick={() => onCallBack(product)}
+          >
+            <div className=" flex  py-2 px-4 justify-center items-center gap-1">
+              <MdEdit className=" text-xl text-white" />{" "}
+              <p className=" text-xl text-white">Edit</p>
+            </div>
+          </button>
+        </div>
       </div>
-      <QuantityControl
-        item={product}
-        quantity={product.unitOnCart as number}
-        onIncrease={() => bloc.addProducToTheOrder(product)}
-        onDecrease={() => bloc.removeProducToTheOrder(product)}
-      />
     </div>
   );
 };

@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import food from "../../../../assets/food.jpg";
 
 import {
   Card,
@@ -20,6 +19,8 @@ import {
 import { useProductContext } from "@/presentation/hooks/useProduct";
 import { QuantityControl } from "./quantityControl";
 
+import defaut from "@/assets/defaut.jpg";
+
 interface CardProductProps {
   product: ProductEntity;
 }
@@ -30,7 +31,6 @@ export const CardProduct: React.FC<CardProductProps> = ({ product }) => {
   const productInCart = bloc.productOnOrder?.OrderItems.find(
     (item) => item.id === product.id
   );
-
   return (
     <Card
       className={cn(
@@ -40,8 +40,12 @@ export const CardProduct: React.FC<CardProductProps> = ({ product }) => {
       <CardHeader>
         <div className="relative w-full">
           <img
-            src={food}
-            alt="food image"
+            src={
+              product.image
+                ? `http://localhost:5000/product/stream/${product.image}`
+                : defaut
+            }
+            alt={product.name}
             className="w-full h-auto rounded-2xl"
           />
         </div>
@@ -50,7 +54,7 @@ export const CardProduct: React.FC<CardProductProps> = ({ product }) => {
         {product.name}
       </CardTitle>
       <CardDescription className=" pl-8 flex justify-center text-lg">
-        Nutritious and packed with antioxydant
+        {product.description}
       </CardDescription>
       <CardContent className=" flex gap-1.5">
         {" "}
@@ -84,13 +88,15 @@ export const CardProduct: React.FC<CardProductProps> = ({ product }) => {
           {productInCart ? (
             <QuantityControl
               item={product}
-              quantity={productInCart.unitOnCart}
+              quantity={productInCart.unitOnCart as number}
               onIncrease={() => bloc.addProducToTheOrder(product)}
-              onDecrease={() => {}}
+              onDecrease={() => {
+                bloc.removeProducToTheOrder(product);
+              }}
             />
           ) : (
             <Button
-              className="w-1/2 bg-green-700 hover:bg-green-900 rounded-2xl"
+              className="w-1/2 cursor-pointer bg-green-700 hover:bg-green-900 rounded-2xl"
               onClick={() => {
                 bloc?.addProducToTheOrder(product);
               }}

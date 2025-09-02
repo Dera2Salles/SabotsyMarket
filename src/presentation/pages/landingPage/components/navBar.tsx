@@ -25,7 +25,7 @@ export const NavBar = () => {
             <CartIconCounter />
             <div className="ml-2.5 flex flex-row gap-2">
               <Link to="/login">
-                <button className="text-green-700 h-9 py-2 px-4 rounded-lg font-semibold flex justify-center items-center bg-white hover:bg-white/90  active:scale-105">
+                <button className="cursor-pointer  text-green-700 h-9 py-2 px-4 rounded-lg font-semibold flex justify-center items-center bg-white hover:bg-white/90  active:scale-105">
                   Log In
                 </button>
               </Link>
