@@ -5,7 +5,10 @@ import type { addProductDto } from "@/application/datasources/product_remote_dat
 export abstract class ProductRepository {
   abstract add(product: ProductEntity[]): Promise<Result<void>>;
 
-  abstract getAll(): Promise<Result<ProductEntity[]>>;
+  abstract getAll(
+    page: number,
+    limit: number
+  ): Promise<Result<ProductEntity[]>>;
 
   abstract getOneByName(data: addProductDto): Promise<Result<ProductEntity>>;
 
