@@ -7,7 +7,7 @@ export interface addProductDto {
 }
 
 export abstract class ProductServerSource {
-  abstract getAll(): Promise<ProductEntity[]>;
+  abstract getAll(page: number, limit: number): Promise<ProductEntity[]>;
   abstract getOneByName(data: addProductDto): Promise<ProductEntity>;
   abstract update(product: ProductEntity): Promise<void>;
   abstract add(product: ProductEntity[]): Promise<void>;
@@ -17,9 +17,11 @@ export abstract class ProductServerSource {
 export class ProductRemoteDataSource implements ProductServerSource {
   constructor(private api: AxiosInstance) {}
 
-  async getAll(): Promise<ProductEntity[]> {
+  async getAll(page: number, limit: number): Promise<ProductEntity[]> {
     try {
-      const response = await this.api.get("http://localhost:5000/product");
+      const response = await this.api.get(
+        `http://localhost:5000/product?page=${page}&limit=${limit}`
+      );
       const product: ProductEntity[] = response.data.data;
       return product;
     } catch (error) {
