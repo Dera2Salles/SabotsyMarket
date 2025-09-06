@@ -3,6 +3,7 @@ import { useProductContext } from "../../../hooks/useProduct";
 import type { ProductEntity } from "@/domain/Entities/Product";
 import { CardProduct } from "./card";
 import { MdSearch } from "react-icons/md";
+import { useIntersectionObserver } from "@/presentation/hooks/useIntersectionObserver";
 
 const buttonItem: { category: string }[] = [
   { category: "All" },
@@ -16,6 +17,12 @@ const buttonItem: { category: string }[] = [
 export const ProductCardList = () => {
   const bloc = useProductContext();
   const productList: ProductEntity[] | undefined = bloc?.productListFiltered;
+
+    const observerRef = useIntersectionObserver(bloc.fetchProduct, {
+    threshold: 0.1,
+    rootMargin: '100px',
+    enabled: !bloc.hasReachedMax 
+  });
 
   return (
     <>
@@ -77,6 +84,8 @@ export const ProductCardList = () => {
           ))}
         </div>
       </div>
+    <div ref={observerRef}  className="h-1 w-full" />
+
     </>
   );
 };
