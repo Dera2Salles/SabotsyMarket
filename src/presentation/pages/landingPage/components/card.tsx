@@ -41,8 +41,8 @@ export const CardProduct: React.FC<CardProductProps> = ({ product }) => {
         <div className="relative w-full">
           <img
             src={
-              product.image
-                ? `http://localhost:5000/product/stream/${product.image}`
+              product.filename
+                ? `http://localhost:5000/product/stream/${product.filename}`
                 : defaut
             }
             alt={product.name}
