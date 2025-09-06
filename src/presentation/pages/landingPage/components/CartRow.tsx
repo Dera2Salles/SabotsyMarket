@@ -21,8 +21,8 @@ export const CartRow: React.FC<CardProductProps> = ({ product }) => {
         <div className="flex">
           <img
             src={
-              product.image
-                ? `http://localhost:5000/product/stream/${product.image}`
+              product.filename
+                ? `http://localhost:5000/product/stream/${product.filename}`
                 : defaut
             }
             alt={product.name}
