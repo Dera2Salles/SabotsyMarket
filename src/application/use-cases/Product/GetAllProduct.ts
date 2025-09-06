@@ -6,7 +6,10 @@ import type { ProductEntity } from "../../../domain/Entities/Product";
 export class GetAllProduct {
   constructor(private repository: ProductRepository) {}
 
-  async execute(): Promise<Result<ProductEntity[], Error>> {
-    return this.repository.getAll();
+  async execute(
+    page: number,
+    limit: number
+  ): Promise<Result<ProductEntity[], Error>> {
+    return this.repository.getAll(page, limit);
   }
 }
