@@ -40,7 +40,7 @@ export const LoginSection = () => {
           type="number"
           onChange={(e) => setUserIdentifier(e.target.value)}
           placeholder="Numero de Téléphone"
-          className=" pl-10 pr-3 p-y-2 flex flex-1 px-4 py-3 w-full text-lg border-2 border-gray-200 rounded-2xl focus:outline-none focus:border-gren-600 focus:ring-2 focus:ring-green-700 transition-all duration-300"
+          className=" pl-10 pr-3 p-y-2 flex flex-1 px-4 py-3 w-full text-lg border-2 border-gray-200 rounded-2xl focus:outline-none focus:border-green-600 focus:ring-1 focus:ring-green-700 transition-all duration-300"
         />
       </div>
       <div className=" relative w-full ">

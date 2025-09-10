@@ -3,7 +3,7 @@ import {
   MdMonetizationOn,
   MdProductionQuantityLimits,
 } from "react-icons/md";
-import type { ProductEntity } from "@/domain/Entities/Product";
+import type { ProductEntity } from "@/product/domain/Entity/Product";
 import { useProductContext } from "@/presentation/hooks/useProduct";
 import { QuantityControl } from "./quantityControl";
 

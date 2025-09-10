@@ -1,6 +1,5 @@
-import type { LoginDto } from "@/application/loginDto";
-import type { UserEntity } from "@/domain/Entities/User";
-import { findUserUseCase } from "@/injection";
+import type { LoginDto } from "@/auth/application/loginDto";
+import { loginUseCase } from "@/injection";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -10,8 +9,8 @@ export const useAuth = () => {
   );
   const [userIdentifier, setUserIdentifier] = useState<string | null>(null);
   const [userPassword, setUserPassword] = useState<string | null>(null);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [user, setUser] = useState<UserEntity | null>(null);
+
+  const [userName, setUserName] = useState<string | null>(null);
 
   const loginData: LoginDto = {
     identifier: userIdentifier as string,
@@ -19,11 +18,12 @@ export const useAuth = () => {
   };
 
   const findUser = async (navigate: (path: string) => void) => {
-    const result = await findUserUseCase.execute(loginData);
+    const result = await loginUseCase.execute(loginData);
     if (result.status === "failure")
-      return toast.error("Error", { description: "user not found" });
-    // setUser(result.data);
-    toast.success("Succes", { description: "User found" });
+      return toast.error("Error", {
+        description: "numberphone or password wrong",
+      });
+    setUserName(result.data);
     navigate("/dashboard");
   };
 
@@ -34,6 +34,6 @@ export const useAuth = () => {
     setUserIdentifier,
     setUserPassword,
     findUser,
-    user,
+    userName,
   };
 };

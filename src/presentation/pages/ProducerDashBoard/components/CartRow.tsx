@@ -4,7 +4,7 @@ import {
   MdMonetizationOn,
   MdProductionQuantityLimits,
 } from "react-icons/md";
-import type { ProductEntity } from "@/domain/Entities/Product";
+import type { ProductEntity } from "@/product/domain/Entity/Product";
 
 import defaut from "@/assets/defaut.jpg";
 
@@ -23,8 +23,8 @@ export const CartRow: React.FC<CardProductProps> = ({
         <div className="flex">
           <img
             src={
-              product.image
-                ? `http://localhost:5000/product/stream/${product.image}`
+              product.filename
+                ? `http://localhost:5000/product/stream/${product.filename}`
                 : defaut
             }
             alt={product.name}

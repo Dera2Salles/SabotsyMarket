@@ -11,7 +11,7 @@ import {
 import { MdCancel, MdPayment, MdShoppingCart } from "react-icons/md";
 import { CartRow } from "./CartRow";
 import { useProductContext } from "@/presentation/hooks/useProduct";
-import type { ProductEntity } from "@/domain/Entities/Product";
+import type { ProductEntity } from "@/product/domain/Entity/Product";
 import { useModalContext } from "../context/useModalContext";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
@@ -42,9 +42,9 @@ export const ProductListOnCart = () => {
             </div>
           </ScrollArea>
         ) : (
-               <p className=" text-gray-500 text-5xl flex justify-center w-full py-12 font-semibold">
-              No product
-            </p>
+          <p className=" text-gray-500 text-5xl flex justify-center w-full py-12 font-semibold">
+            No product
+          </p>
         )}
       </CardContent>
       <CardFooter className="flex justify-between items-center">
@@ -56,7 +56,10 @@ export const ProductListOnCart = () => {
               {bloc.productOnOrder?.OrderItemsTotalPrice?.toFixed(2) || "0.00"}{" "}
               MGA
             </div>
-            <Button className="cursor-pointer bg-green-700 hover:bg-green-900 ">
+            <Button
+              onClick={bloc.confirmOrder}
+              className="cursor-pointer bg-green-700 hover:bg-green-900 "
+            >
               <div className=" flex  py-2 px-4 justify-center items-center gap-1">
                 <MdPayment className=" text-3xl" />{" "}
                 <p className=" text-xl">Purchase</p>

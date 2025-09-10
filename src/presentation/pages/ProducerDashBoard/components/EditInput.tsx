@@ -23,7 +23,6 @@ export const EditInput = () => {
     setProductName,
     setProductPrice,
     setProductUnit,
-    addNewProduct,
     closeEditModal,
   } = useDashboardContext();
   return (
@@ -102,7 +101,7 @@ export const EditInput = () => {
       <CardFooter className="flex justify-end">
         <Button
           className=" bg-green-700 hover:bg-green-900 "
-          onClick={addNewProduct}
+          // onClick={addNewProduct}
         >
           <div className=" flex  py-2 px-4 justify-center items-center gap-1">
             <p className=" text-xl">Confirm</p>

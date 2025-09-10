@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import type { ProductEntity } from "@/domain/Entities/Product";
+import type { ProductEntity } from "@/product/domain/Entity/Product";
 import { MdAdd, MdRemove } from "react-icons/md";
 
 interface QuantityControlProps {

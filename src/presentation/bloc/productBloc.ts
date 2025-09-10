@@ -1,23 +1,27 @@
-import type { OrderEntity } from "@/domain/Entities/Order";
-import type { ProductEntity } from "@/domain/Entities/Product";
+import type { OrderEntity } from "@/order/domain/Entities/Order";
+import type { ProductEntity } from "@/product/domain/Entity/Product";
 
 import {
   addProductToTheOrderUseCase,
   createAnOrderUseCase,
   getAllProductUseCase,
-  insertManyProductUseCase,
   removeProductOrderUseCase,
+  confirmOrderUseCase,
 } from "@/injection";
 
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
 import { debounce } from "lodash";
-import { filter } from "@/application/use-cases/Product/FilterAndSortProducts";
+import { filter } from "@/product/application/Product/FilterAndSortProducts";
 
 export const useProductBloc = () => {
+  const [index, setIndex] = useState<number>(0);
+
   const [productList, setProductList] = useState<ProductEntity[]>([]);
   const [productOnOrder, setProductOnOrder] = useState<OrderEntity>();
   const [filterCategory, setFilterCategory] = useState<string>("All");
+  const [page, setPage] = useState<number>(1);
+  const [hasReachedMax, setHasReachedMax] = useState<boolean>(false);
 
   const [searchTerm, setSearch] = useState<string>("");
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState<string>("");
@@ -27,11 +31,31 @@ export const useProductBloc = () => {
     searchTerm: debouncedSearchTerm,
     category: filterCategory,
   });
+  const limit = 5;
+
+  const confirmOrder = async () => {
+    const result = await confirmOrderUseCase.execute();
+    if (result.status === "success") {
+      toast.success("Succes", {
+        description: "Order confirmed",
+        className: "animate-fade animate-once animate-ease-out",
+      });
+    } else {
+      toast.error("Error", {
+        description: "error on order confirmation",
+      });
+    }
+  };
 
   const fetchProduct = async () => {
-    const result = await getAllProductUseCase.execute();
+    const result = await getAllProductUseCase.execute(page, limit);
     if (result.status === "success") {
-      setProductList(result.data);
+      if (result.data.length == 0) {
+        setHasReachedMax(true);
+      } else {
+        setProductList((product) => [...product, ...result.data]);
+        setPage((prev) => prev + 1);
+      }
     } else {
       toast.error("Error", {
         description: "Failed to fetch products",
@@ -68,31 +92,6 @@ export const useProductBloc = () => {
     setProductOnOrder(result.data);
   };
 
-  const addNewProduct = async (toAdd: ProductEntity[]) => {
-    const result = await insertManyProductUseCase.execute(toAdd);
-    if (result.status === "success") {
-      const [newToAdd] = toAdd;
-      const listUpdate: ProductEntity[] = [...productList, newToAdd];
-      setProductList(listUpdate);
-      toast.success("Succes", {
-        description: "Product added",
-        className: "animate-fade animate-once animate-ease-out",
-      });
-    } else {
-      toast.error("Error", {
-        description: "Failed to add product",
-      });
-    }
-  };
-
-  useEffect(() => {
-    const callFetchProduct = async () => {
-      await fetchProduct();
-    };
-
-    callFetchProduct();
-  }, []);
-
   useEffect(() => {
     const search = debounce(() => {
       setDebouncedSearchTerm(searchTerm);
@@ -108,7 +107,6 @@ export const useProductBloc = () => {
   return {
     productList,
     fetchProduct,
-    addNewProduct,
     createAnOrder,
     addProducToTheOrder,
     productOnOrder,
@@ -118,5 +116,9 @@ export const useProductBloc = () => {
     setSearch,
     filterCategory,
     removeProducToTheOrder,
+    hasReachedMax,
+    confirmOrder,
+    index,
+    setIndex,
   };
 };

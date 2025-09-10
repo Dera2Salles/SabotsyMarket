@@ -1,25 +1,19 @@
+import { useDashboardContext } from "../context/useDashboardContext";
 import { AvatarProducer } from "./avatar";
-import { useAuthContext } from "../../Login/context/useAuthContext";
 
 export const NavBar = () => {
-  const { user } = useAuthContext();
+  const { userName } = useDashboardContext();
   return (
-    <div className="fixed z-50 w-full">
-      <div className="  bg-green-700 flex flex-row  justify-between">
-        <div className=" py-3 px-6 flex flex-row justify-between w-full">
+    <div className="z-50 w-full">
+      <div className=" flex flex-row  justify-between">
+        <div className="flex flex-row justify-between w-full">
           <div className=" flex flex-row justify-between gap-2">
-            <div className=" flex justify-center items-center"></div>
-
-            <div className="flex font-semibold text-white text-2xl justify-center items-center">
-              <p className=" text-yellow-500 font-semibold"> Producer</p>{" "}
-              DashBoard
+            <div className="flex font-semibold text-green-700 gap-2 text-2xl justify-center items-center">
+              <p className=" text-yellow-500 font-semibold"> Welcome, </p>{" "}
+              {userName?.toUpperCase()}
             </div>
           </div>
-
-          <div className="flex flex-row justify-center items-center gap-5 ">
-            <p className=" text-white font-semibold text-xl flex flex-row gap-1 ">
-              Welcome, {user?.nom} ato
-            </p>
+          <div className="flex flex-row justify-center items-center gap-5">
             <AvatarProducer />
           </div>
         </div>

@@ -1,13 +1,24 @@
-import { useProductContext } from "@/presentation/hooks/useProduct";
 import { useRef, useState } from "react";
-import type { ProductEntity } from "@/domain/Entities/Product";
-import { sendFilesUseCase } from "@/injection";
+import type { ProductEntity } from "@/product/domain/Entity/Product";
+import {
+  deleteProductUseCase,
+  getUserDataUseCase,
+  insertManyProductUseCase,
+  sendFilesUseCase,
+} from "@/injection";
+import { toast } from "sonner";
 
 export const useDashboard = () => {
+  const [productTotalNumber, setProductTotalNumber] = useState<number>(0);
+  const [productOnOrderTotalNumber, setProductOnOrderTotalNumber] =
+    useState<number>(0);
+  const [userName, setUserName] = useState<string | null>(null);
+  const [productList, setProductList] = useState<ProductEntity[]>([]);
+  const [hasReachedMax, setHasReachedMax] = useState<boolean>(false);
+  const [page, setPage] = useState<number>(1);
   const [image, setImage] = useState<string | null>(null);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [uploadProgress, setUploadProgress] = useState<number>(0);
-
   const [productName, setProductName] = useState<string | null>(null);
   const [productCategory, setProductCategory] = useState<string | null>(null);
   const [productDescription, setProductDescription] = useState<string | null>(
@@ -19,18 +30,51 @@ export const useDashboard = () => {
   const [editingProduct, setEditingProduct] = useState<ProductEntity | null>(
     null
   );
-
-  const [uploadStatus, setUploadStatus] = useState<
-    "idle" | "uploading" | "success" | "error"
-  >("idle");
   const [errorMessage, setErrorMessage] = useState<string>("");
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const limit = 5;
+
+  const fetchProduct = async () => {
+    const result = await getUserDataUseCase.execute(page, limit);
+    if (result.status === "success") {
+      if (result.data.product.length == 0) {
+        setHasReachedMax(true);
+      } else {
+        setProductTotalNumber(result.data.productTotalNumber);
+        setProductOnOrderTotalNumber(result.data.productOnOrderTotalNumber);
+        setProductList((product) => [...product, ...result.data.product]);
+        setPage((prev) => prev + 1);
+      }
+      setUserName(result.data.name);
+    } else {
+      toast.error("Error", {
+        description: "Failed to fetch products",
+      });
+    }
+  };
+
+  const deleteProduct = async (productId: string) => {
+    const result = await deleteProductUseCase.execute(productId);
+    if (result.status === "success") {
+      const newProduct = productList.filter((item) => item.id != productId);
+      setProductList(newProduct);
+      setProductTotalNumber((number) => number - 1);
+      toast.success("Succes", {
+        description: "product deleted",
+        className: "animate-fade animate-once animate-ease-out",
+      });
+    } else {
+      toast.error("Error", {
+        description: "error on deleting product",
+      });
+    }
+  };
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
     if (files && files.length > 0) {
       setSelectedFile(files[0]);
-      setUploadStatus("idle");
       setUploadProgress(0);
       setErrorMessage("");
     }
@@ -63,7 +107,6 @@ export const useDashboard = () => {
     const formData = new FormData();
     formData.append("file", selectedFile);
 
-    setUploadStatus("uploading");
     setErrorMessage("");
     const result = await sendFilesUseCase.execute(formData);
     if (result.status == "failure") {
@@ -78,7 +121,6 @@ export const useDashboard = () => {
 
   const handleCancel = () => {
     setSelectedFile(null);
-    setUploadStatus("idle");
     setUploadProgress(0);
     setErrorMessage("");
     if (fileInputRef.current) {
@@ -86,32 +128,42 @@ export const useDashboard = () => {
     }
   };
 
-  const bloc = useProductContext();
-
   const sendToServer = () => {
     addNewProduct();
     if (selectedFile) handleUpload();
   };
 
-  const addNewProduct = () => {
-    if (productName && productPrice && productUnit) {
-      const newProduct: ProductEntity[] = [
-        {
-          producerId: "0388257986",
-          price: productPrice,
-          unit: productUnit,
-          name: productName,
-          category: productCategory as string,
-          description: productDescription as string,
-          image: selectedFile?.name,
-        },
-      ];
-      bloc?.addNewProduct(newProduct);
+  const addNewProduct = async () => {
+    const newProduct: ProductEntity[] = [
+      {
+        price: productPrice as number,
+        unit: productUnit as number,
+        name: productName as string,
+        category: productCategory as string,
+        description: productDescription as string,
+        filename: selectedFile?.name,
+      },
+    ];
+
+    const result = await insertManyProductUseCase.execute(newProduct);
+    if (result.status === "success") {
+      const [newToAdd] = newProduct;
+      const listUpdate: ProductEntity[] = [...productList, newToAdd];
+      setProductTotalNumber((number) => number + 1);
+      setProductList(listUpdate);
+      toast.success("Succes", {
+        description: "Product added",
+        className: "animate-fade animate-once animate-ease-out",
+      });
+    } else {
+      toast.error("Error", {
+        description: "Failed to add product",
+      });
     }
   };
 
-  const openEditModal = (product: ProductEntity) => {
-    setEditingProduct(product);
+  const openEditModal = () => {
+    // setEditingProduct(product);
     setIsEditModalVisible(true);
   };
 
@@ -119,6 +171,14 @@ export const useDashboard = () => {
     setIsEditModalVisible(false);
     setEditingProduct(null);
   };
+
+  //   useEffect(() => {
+  //   const callFetchProduct = async () => {
+  //     await fetchProduct();
+  //   };
+
+  //   callFetchProduct();
+  // }, []);
 
   return {
     setProductName,
@@ -132,7 +192,6 @@ export const useDashboard = () => {
     setProductDescription,
     handleCancel,
     handleFileChange,
-    uploadStatus,
     errorMessage,
     uploadProgress,
     fileInputRef,
@@ -140,5 +199,12 @@ export const useDashboard = () => {
     image,
     handleImageChange,
     sendToServer,
+    fetchProduct,
+    hasReachedMax,
+    productList,
+    userName,
+    deleteProduct,
+    productTotalNumber,
+    productOnOrderTotalNumber,
   };
 };
