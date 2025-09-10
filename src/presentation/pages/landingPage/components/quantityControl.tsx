@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import type { ProductEntity } from "@/domain/Entities/Product";
+import type { ProductEntity } from "@/product/domain/Entity/Product";
 import { MdAdd, MdRemove } from "react-icons/md";
 
 interface QuantityControlProps {
@@ -20,16 +20,16 @@ export const QuantityControl: React.FC<QuantityControlProps> = ({
       <Button
         size="icon"
         variant="outline"
-        className="rounded-full border-black hover:border-white"
+        className="rounded-full cursor-pointer border-black hover:border-white"
         onClick={onDecrease}
       >
-        <MdRemove />
+        <MdRemove className="cursor-pointer" />
       </Button>
       <span className="font-bold text-xl">{quantity}</span>
       <Button
         size="icon"
         variant="outline"
-        className="rounded-full border-black hover:border-white"
+        className="rounded-full cursor-pointer border-black hover:border-white"
         onClick={onIncrease}
         disabled={quantity == item.unit ? true : false}
       >

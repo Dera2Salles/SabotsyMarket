@@ -1,12 +1,13 @@
-import food from "../../../../assets/food.jpg";
 import {
   MdCategory,
   MdMonetizationOn,
   MdProductionQuantityLimits,
 } from "react-icons/md";
-import type { ProductEntity } from "@/domain/Entities/Product";
+import type { ProductEntity } from "@/product/domain/Entity/Product";
 import { useProductContext } from "@/presentation/hooks/useProduct";
 import { QuantityControl } from "./quantityControl";
+
+import defaut from "@/assets/defaut.jpg";
 
 interface CardProductProps {
   product: ProductEntity;
@@ -18,7 +19,15 @@ export const CartRow: React.FC<CardProductProps> = ({ product }) => {
     <div className="w-full bg-card  text-card-foreground items-center justify-between  flex flex-row gap-10 rounded-4xl border-4 py-5 px-5 shadow-2xs">
       <div className=" flex gap-15">
         <div className="flex">
-          <img src={food} alt="food image" className="size-45 rounded-2xl" />
+          <img
+            src={
+              product.filename
+                ? `http://localhost:5000/product/stream/${product.filename}`
+                : defaut
+            }
+            alt={product.name}
+            className="size-45 rounded-2xl"
+          />
         </div>
         <div className=" flex flex-col gap-2 justify-center">
           <div className="flex gap-2">
@@ -57,9 +66,9 @@ export const CartRow: React.FC<CardProductProps> = ({ product }) => {
       </div>
       <QuantityControl
         item={product}
-        quantity={product.unitOnCart}
+        quantity={product.unitOnCart as number}
         onIncrease={() => bloc.addProducToTheOrder(product)}
-        onDecrease={() => bloc.addProducToTheOrder(product)}
+        onDecrease={() => bloc.removeProducToTheOrder(product)}
       />
     </div>
   );

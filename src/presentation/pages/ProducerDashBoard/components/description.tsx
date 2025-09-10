@@ -1,5 +1,6 @@
 import fond from "../../../../assets/grocery.jpg";
 
+
 export const Description = () => {
   return (
     <div className="relative pt-15">
@@ -13,7 +14,7 @@ export const Description = () => {
               Get organic produce and sustainably sourced <br /> groceries
               delivery at up to 4% off grocery
             </p>
-            <button className=" w-1/2 text-green-700 h-9 py-6 px-12 rounded-lg font-semibold flex justify-center items-center bg-white hover:bg-white/90 active:scale-105">
+            <button  className=" w-1/2 text-green-700 h-9 py-6 px-12 rounded-lg font-semibold flex justify-center items-center bg-white hover:bg-white/90 active:scale-105">
               About us
             </button>
           </div>

@@ -14,18 +14,15 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-import { MdAdd, MdCancel } from "react-icons/md";
+import { MdCancel } from "react-icons/md";
 
 import { useDashboardContext } from "../context/useDashboardContext";
-
-// import { ImageUploader } from "./imageUploader";
 
 export const EditInput = () => {
   const {
     setProductName,
     setProductPrice,
     setProductUnit,
-    addNewProduct,
     closeEditModal,
   } = useDashboardContext();
   return (
@@ -49,13 +46,11 @@ export const EditInput = () => {
               >
                 Name
               </Label>
-
               <input
                 onChange={(e) => setProductName(e.target.value)}
                 placeholder="Ex : Banana"
-                className="  border-green-700 h-12  pl-4 pr-11 placeholder:text-lg   text-lg border-1 bg-white rounded-sm focus:outline-none  focus:border-green-700 focus:ring-1 focus:ring-green-900  transition-all duration-300"
+                className="   h-12  pl-4 pr-11 placeholder:text-lg   text-lg border-1 bg-gray-100 rounded-sm focus:outline-none  focus:ring-0 transition-all duration-300"
               />
-
               <Label
                 htmlFor="price"
                 className=" text-lg text-green-700 font-semibold"
@@ -66,7 +61,7 @@ export const EditInput = () => {
                 type="number"
                 onChange={(e) => setProductPrice(parseInt(e.target.value))}
                 placeholder="Ex : 1000"
-                className="  border-green-700 h-12  pl-4 pr-11 placeholder:text-lg   text-lg border-1 bg-white rounded-sm focus:outline-none  focus:border-green-700 focus:ring-1 focus:ring-green-900  transition-all duration-300"
+                className="   h-12  pl-4 pr-11 placeholder:text-lg   text-lg border-1 bg-gray-100 rounded-sm focus:outline-none  focus:ring-0 transition-all duration-300"
               />
               <Label
                 htmlFor="name"
@@ -78,9 +73,8 @@ export const EditInput = () => {
                 type="number"
                 onChange={(e) => setProductUnit(parseInt(e.target.value))}
                 placeholder="Ex : 52"
-                className="  border-green-700 h-12   pl-4 pr-11 placeholder:text-lg   text-lg border-1 bg-white rounded-sm focus:outline-none  focus:border-green-700 focus:ring-1 focus:ring-green-900  transition-all duration-300"
+                className="   h-12  pl-4 pr-11 placeholder:text-lg   text-lg border-1 bg-gray-100 rounded-sm focus:outline-none  focus:ring-0 transition-all duration-300"
               />
-              {/* <ImageUploader /> */}
             </div>
             <div className="flex flex-col space-y-1.5">
               <Label
@@ -90,7 +84,7 @@ export const EditInput = () => {
                 Category
               </Label>
               <Select>
-                <SelectTrigger id="foodCategory">
+                <SelectTrigger className=" flex w-full" id="foodCategory">
                   <SelectValue placeholder="Select" />
                 </SelectTrigger>
                 <SelectContent position="popper">
@@ -107,10 +101,10 @@ export const EditInput = () => {
       <CardFooter className="flex justify-end">
         <Button
           className=" bg-green-700 hover:bg-green-900 "
-          onClick={addNewProduct}
+          // onClick={addNewProduct}
         >
           <div className=" flex  py-2 px-4 justify-center items-center gap-1">
-            <MdAdd className=" text-3xl" /> <p className=" text-xl">Add</p>
+            <p className=" text-xl">Confirm</p>
           </div>
         </Button>
       </CardFooter>
