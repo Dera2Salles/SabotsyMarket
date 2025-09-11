@@ -3,10 +3,10 @@ import {
   MdEdit,
   MdMonetizationOn,
   MdProductionQuantityLimits,
-} from "react-icons/md";
-import type { ProductEntity } from "@/product/domain/Entity/Product";
+} from 'react-icons/md';
+import type { ProductEntity } from '@/product/domain/Entity/Product';
 
-import defaut from "@/assets/defaut.jpg";
+import defaut from '@/assets/defaut.jpg';
 
 interface CardProductProps {
   product: ProductEntity;
@@ -35,7 +35,7 @@ export const CartRow: React.FC<CardProductProps> = ({
           <div className="flex gap-2">
             <MdCategory className=" text-yellow-500 text-2xl" />
             <div className="flex gap-1 ">
-              {" "}
+              {' '}
               <p className="font-bold text-xl">Product : </p>
               <p className="text-lg">{product?.name}</p>
             </div>
@@ -43,7 +43,7 @@ export const CartRow: React.FC<CardProductProps> = ({
           <div className="flex gap-2">
             <MdCategory className=" text-yellow-500 text-2xl" />
             <div className="flex gap-1 ">
-              {" "}
+              {' '}
               <p className="font-bold text-xl">Category : </p>
               <p>{product.category}</p>
             </div>
@@ -51,15 +51,15 @@ export const CartRow: React.FC<CardProductProps> = ({
           <div className="flex gap-2">
             <MdMonetizationOn className=" text-yellow-500 text-2xl" />
             <div className="flex gap-1 ">
-              {" "}
+              {' '}
               <p className="font-bold text-xl">Price : </p>
-              <p className="text-lg">{product?.price || "0"}.00 MGA per unit</p>
+              <p className="text-lg">{product?.price || '0'}.00 MGA per unit</p>
             </div>
           </div>
           <div className=" flex gap-2">
             <MdProductionQuantityLimits className=" text-yellow-500 text-2xl" />
             <div className="flex gap-1 ">
-              {" "}
+              {' '}
               <p className="font-bold text-xl">Unit: </p>
               <p className=" text-lg">{product?.unit}</p>
             </div>
@@ -71,7 +71,7 @@ export const CartRow: React.FC<CardProductProps> = ({
             onClick={() => onCallBack(product)}
           >
             <div className=" flex  py-2 px-4 justify-center items-center gap-1">
-              <MdEdit className=" text-xl text-white" />{" "}
+              <MdEdit className=" text-xl text-white" />{' '}
               <p className=" text-xl text-white">Edit</p>
             </div>
           </button>

@@ -1,17 +1,17 @@
-import { motion } from "framer-motion";
-import { useProductContext } from "../../../hooks/useProduct";
-import type { ProductEntity } from "@/product/domain/Entity/Product";
-import { CardProduct } from "./card";
-import { MdSearch } from "react-icons/md";
-import { useIntersectionObserver } from "@/presentation/hooks/useIntersectionObserver";
+import { motion } from 'framer-motion';
+import { useProductContext } from '../../../hooks/useProduct';
+import type { ProductEntity } from '@/product/domain/Entity/Product';
+import { CardProduct } from './card';
+import { MdSearch } from 'react-icons/md';
+import { useIntersectionObserver } from '@/presentation/hooks/useIntersectionObserver';
 
 const buttonItem: { category: string }[] = [
-  { category: "All" },
-  { category: "Fruits" },
-  { category: "Épicerie" },
-  { category: "Boulangerie" },
-  { category: "Légumes" },
-  { category: "Produits Laitiers" },
+  { category: 'All' },
+  { category: 'Fruits' },
+  { category: 'Épicerie' },
+  { category: 'Boulangerie' },
+  { category: 'Légumes' },
+  { category: 'Produits Laitiers' },
 ];
 
 export const ProductCardList = () => {
@@ -20,7 +20,7 @@ export const ProductCardList = () => {
 
   const observerRef = useIntersectionObserver(bloc.fetchProduct, {
     threshold: 0.1,
-    rootMargin: "100px",
+    rootMargin: '100px',
     enabled: !bloc.hasReachedMax,
   });
 
@@ -47,15 +47,15 @@ export const ProductCardList = () => {
                   key={key}
                   className={`flex cursor-pointer justify-center border border-green-700 rounded-4xl transition-all duration-100 ${
                     bloc.filterCategory === item.category
-                      ? "bg-green-700"
-                      : "bg-white hover:bg-green-700"
+                      ? 'bg-green-700'
+                      : 'bg-white hover:bg-green-700'
                   }`}
                 >
                   <p
                     className={`font-semibold px-4 py-2 text-xl ${
                       bloc.filterCategory === item.category
-                        ? "text-white"
-                        : "text-green-700 hover:text-white"
+                        ? 'text-white'
+                        : 'text-green-700 hover:text-white'
                     }`}
                   >
                     {item.category}

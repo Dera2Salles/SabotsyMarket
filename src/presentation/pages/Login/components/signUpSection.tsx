@@ -5,8 +5,8 @@ import {
   MdLock,
   MdPerson2,
   MdPhone,
-} from "react-icons/md";
-import { useAuthContext } from "../context/useAuthContext";
+} from 'react-icons/md';
+import { useAuthContext } from '../context/useAuthContext';
 
 export const SignUpSection = () => {
   const { activeSection, setActiveSection } = useAuthContext();
@@ -14,13 +14,13 @@ export const SignUpSection = () => {
   return (
     <div
       className={`w-1/2  px-10 py-10 flex flex-col items-center  gap-4 transition-all duration-300 ${
-        activeSection === "signup" ? "z-10 opacity-100" : "opacity-0"
+        activeSection === 'signup' ? 'z-10 opacity-100' : 'opacity-0'
       }`}
     >
       <div className="text-center mb-5">
         <div className="flex relative w-full justify-center">
           <MdArrowLeft
-            onClick={() => setActiveSection("login")}
+            onClick={() => setActiveSection('login')}
             className=" absolute -left-25 -top-4 text-7xl text-green-700 hover:scale-125 transition-all duration-300"
           />
           <h1 className="text-5xl  font-extrabold text-green-700 mb-2">

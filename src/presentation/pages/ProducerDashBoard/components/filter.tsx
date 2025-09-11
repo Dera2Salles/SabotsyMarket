@@ -1,22 +1,22 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 interface Item {
   id: number;
   name: string;
   category: string;
   price: number;
-};
+}
 
 const FilterComponent = () => {
   const [items] = useState<Item[]>([
-    { id: 1, name: "Produit A", category: "Électronique", price: 100 },
-    { id: 2, name: "Produit B", category: "Vêtement", price: 50 },
-    { id: 3, name: "Produit C", category: "Électronique", price: 200 },
+    { id: 1, name: 'Produit A', category: 'Électronique', price: 100 },
+    { id: 2, name: 'Produit B', category: 'Vêtement', price: 50 },
+    { id: 3, name: 'Produit C', category: 'Électronique', price: 200 },
   ]);
 
-  const [filterCategory, setFilterCategory] = useState<string>("");
+  const [filterCategory, setFilterCategory] = useState<string>('');
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000]);
-  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>('');
 
   // Filtrer les éléments
   const filteredItems = items.filter((item) => {
@@ -32,7 +32,7 @@ const FilterComponent = () => {
     //   .toLowerCase()
     //   .includes(searchTerm.toLowerCase());
 
-    return categoryMatch ;
+    return categoryMatch;
   });
 
   return (

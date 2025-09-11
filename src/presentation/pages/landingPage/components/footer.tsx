@@ -1,4 +1,4 @@
-import { MountainIcon } from "lucide-react";
+import { MountainIcon } from 'lucide-react';
 
 export const Footer = () => {
   return (

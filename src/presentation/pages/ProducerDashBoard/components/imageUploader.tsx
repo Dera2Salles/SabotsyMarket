@@ -1,6 +1,6 @@
-import React from "react";
-import { FaImage } from "react-icons/fa";
-import defaut from "@/assets/defaut.jpg";
+import React from 'react';
+import { FaImage } from 'react-icons/fa';
+import defaut from '@/assets/defaut.jpg';
 
 interface ImageProductProps {
   image: string;
@@ -18,7 +18,7 @@ export const ImageUploader: React.FC<ImageProductProps> = ({
         className="cursor-pointer flex items-center border p-2 rounded bg-gray-100"
       >
         <FaImage className="mr-2 text-lg text-green-700" /> {/* Icône image */}
-        {image ? "Choose another picture" : "Choose a picture"}{" "}
+        {image ? 'Choose another picture' : 'Choose a picture'}{' '}
       </label>
       <input
         type="file"
@@ -30,7 +30,7 @@ export const ImageUploader: React.FC<ImageProductProps> = ({
 
       <div className="mt-4">
         <p className="mb-2 text-green-700">
-          {image ? "Choosen picture" : "Default picture"} :
+          {image ? 'Choosen picture' : 'Default picture'} :
         </p>
         <img
           src={image ? image : defaut}

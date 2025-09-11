@@ -1,9 +1,9 @@
-import { MdFlashOn, MdPerson2 } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { MdFlashOn, MdPerson2 } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 
-import { Description } from "./description";
-import { useIntersection } from "../hooks/useIntersection";
-import { Button } from "@/components/ui/button";
+import { Description } from './description';
+import { useIntersection } from '../hooks/useIntersection';
+import { Button } from '@/components/ui/button';
 
 export const NavBar = () => {
   const { ref, isVisible } = useIntersection();
@@ -11,21 +11,21 @@ export const NavBar = () => {
     <>
       <div
         className={`fixed z-100 w-full ${
-          isVisible ? " bg-gradient-to-r from-green-700 to-green-600" : ""
+          isVisible ? ' bg-gradient-to-r from-green-700 to-green-600' : ''
         }`}
       >
         <div className=" flex flex-row  justify-betwee overflow-clip">
           <div className=" py-3 px-6 flex flex-row justify-between z-200 w-full">
             <div className=" flex flex-row justify-between gap-2">
               <div className="flex font-semibold text-white text-xl justify-center items-center">
-                <p className=" text-yellow-500 font-semibold"> Sabotsy</p>{" "}
+                <p className=" text-yellow-500 font-semibold"> Sabotsy</p>{' '}
                 Market
               </div>
             </div>
             <div className="flex flex-row gap-2 justify-center items-center ">
               <div className=" text-white font-semibold flex flex-row gap-1 ">
                 <MdFlashOn className=" text-yellow-500 text-xl" />
-                <p>Order now and get it within {"   "}</p>{" "}
+                <p>Order now and get it within {'   '}</p>{' '}
                 <p className=" text-yellow-500 font-semibold"> 15 min!</p>
               </div>
               <div className="ml-2.5 flex flex-row gap-2">
