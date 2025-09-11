@@ -1,7 +1,8 @@
-import type { UserEntity } from "@/auth/domain/Entity/User";
-import type { LoginDto } from "../loginDto";
-import type { AxiosInstance } from "axios";
-import type { UserData } from "@/auth/domain/repository/AuthRepository";
+import type { UserEntity } from '@/auth/domain/Entity/User';
+import type { LoginDto } from '../loginDto';
+import type { AxiosInstance } from 'axios';
+import type { UserData } from '@/auth/domain/repository/AuthRepository';
+import { ApiSource } from '@/core/constant';
 
 export abstract class AuthService {
   abstract logIn(loginData: LoginDto): Promise<string>;
@@ -15,8 +16,8 @@ export class AuthServiceImpl implements AuthService {
   async logIn(loginData: LoginDto): Promise<string> {
     try {
       const response = await this.service.post(
-        "http://localhost:5000/auth/login",
-        loginData
+        `${ApiSource.local}/auth/login`,
+        loginData,
       );
 
       if (response.status != 200) throw new Error();
@@ -29,7 +30,7 @@ export class AuthServiceImpl implements AuthService {
   async getData(page: number, limit: number): Promise<UserData> {
     try {
       const response = await this.service.get(
-        `http://localhost:5000/auth?page=${page}&limit=${limit}`
+        `${ApiSource.local}/auth?page=${page}&limit=${limit}`,
       );
 
       if (response.status != 200) throw new Error();
