@@ -1,19 +1,19 @@
-import { Button } from "@/components/ui/button";
-import { AttachMoney } from "@mui/icons-material";
+import { Button } from '@/components/ui/button';
+import { AttachMoney } from '@mui/icons-material';
 
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
-} from "@/components/ui/card";
+} from '@/components/ui/card';
 
-import { MdCancel, MdPayment, MdShoppingCart } from "react-icons/md";
-import { CartRow } from "./CartRow";
-import { useProductContext } from "@/presentation/hooks/useProduct";
-import type { ProductEntity } from "@/product/domain/Entity/Product";
-import { useModalContext } from "../context/useModalContext";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { MdCancel, MdPayment, MdShoppingCart } from 'react-icons/md';
+import { CartRow } from './CartRow';
+import { useProductContext } from '@/presentation/hooks/useProduct';
+import type { ProductEntity } from '@/product/domain/Entity/Product';
+import { useModalContext } from '../context/useModalContext';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 export const ProductListOnCart = () => {
   const { closeProductListOnCart } = useModalContext();
@@ -51,9 +51,9 @@ export const ProductListOnCart = () => {
         {productOnOrderList && productOnOrderList.length != 0 ? (
           <div className=" flex w-full justify-between">
             <div className="text-xl font-bold">
-              <AttachMoney fontSize="large" className="text-yellow-500" />{" "}
-              Total:{" "}
-              {bloc.productOnOrder?.OrderItemsTotalPrice?.toFixed(2) || "0.00"}{" "}
+              <AttachMoney fontSize="large" className="text-yellow-500" />{' '}
+              Total:{' '}
+              {bloc.productOnOrder?.OrderItemsTotalPrice?.toFixed(2) || '0.00'}{' '}
               MGA
             </div>
             <Button
@@ -61,7 +61,7 @@ export const ProductListOnCart = () => {
               className="cursor-pointer bg-green-700 hover:bg-green-900 "
             >
               <div className=" flex  py-2 px-4 justify-center items-center gap-1">
-                <MdPayment className=" text-3xl" />{" "}
+                <MdPayment className=" text-3xl" />{' '}
                 <p className=" text-xl">Purchase</p>
               </div>
             </Button>

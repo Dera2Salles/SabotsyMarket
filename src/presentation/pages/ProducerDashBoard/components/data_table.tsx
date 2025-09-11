@@ -1,13 +1,13 @@
-import { flexRender } from "@tanstack/react-table";
-import { ChevronDown } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { flexRender } from '@tanstack/react-table';
+import { ChevronDown } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
+} from '@/components/ui/dropdown-menu';
+import { Input } from '@/components/ui/input';
 import {
   Table,
   TableBody,
@@ -15,14 +15,14 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
-import { Modal } from "@/components/ui/modal";
-import { EditInput } from "./EditInput";
+} from '@/components/ui/table';
+import { Modal } from '@/components/ui/modal';
+import { EditInput } from './EditInput';
 
-import { useDashboardContext } from "../context/useDashboardContext";
-import { useScrollLock } from "@/presentation/hooks/useScrollLock";
-import { useDataTable } from "../hooks/useDataTable";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { useDashboardContext } from '../context/useDashboardContext';
+import { useScrollLock } from '@/presentation/hooks/useScrollLock';
+import { useDataTable } from '../hooks/useDataTable';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 export const ProductDataTable = () => {
   const { observerRef, table, columns } = useDataTable();
@@ -34,9 +34,9 @@ export const ProductDataTable = () => {
       <div className="flex items-center py-4 ">
         <Input
           placeholder="Filter product..."
-          value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
+          value={(table.getColumn('name')?.getFilterValue() as string) ?? ''}
           onChange={(event) =>
-            table.getColumn("name")?.setFilterValue(event.target.value)
+            table.getColumn('name')?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />
@@ -79,7 +79,7 @@ export const ProductDataTable = () => {
                         ? null
                         : flexRender(
                             header.column.columnDef.header,
-                            header.getContext()
+                            header.getContext(),
                           )}
                     </TableHead>
                   );
@@ -95,13 +95,13 @@ export const ProductDataTable = () => {
                 table.getRowModel().rows.map((row) => (
                   <TableRow
                     key={row.id}
-                    data-state={row.getIsSelected() && "selected"}
+                    data-state={row.getIsSelected() && 'selected'}
                   >
                     {row.getVisibleCells().map((cell) => (
                       <TableCell key={cell.id}>
                         {flexRender(
                           cell.column.columnDef.cell,
-                          cell.getContext()
+                          cell.getContext(),
                         )}
                       </TableCell>
                     ))}

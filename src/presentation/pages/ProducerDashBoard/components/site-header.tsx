@@ -1,6 +1,6 @@
-import { Separator } from "@/components/ui/separator"
-import { SidebarTrigger } from "@/components/ui/sidebar"
-import { NavBar } from "./navBar"
+import { Separator } from '@/components/ui/separator';
+import { SidebarTrigger } from '@/components/ui/sidebar';
+import { NavBar } from './navBar';
 
 export function SiteHeader() {
   return (
@@ -11,8 +11,8 @@ export function SiteHeader() {
           orientation="vertical"
           className="mx-2 data-[orientation=vertical]:h-4"
         />
-        <NavBar/>
+        <NavBar />
       </div>
     </header>
-  )
+  );
 }

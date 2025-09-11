@@ -1,13 +1,10 @@
-import fond from "../../../../assets/defaut.jpg";
-
+import fond from '@/assets/defaut.jpg';
 
 interface descriptionProps {
-  ref:  React.RefObject<HTMLDivElement | null>;
- 
+  ref: React.RefObject<HTMLDivElement | null>;
 }
 
-
-export const Description : React.FC<descriptionProps>  = ({ref}) => {
+export const Description: React.FC<descriptionProps> = ({ ref }) => {
   return (
     <div className="relative ">
       <div className="flex ">
@@ -21,13 +18,13 @@ export const Description : React.FC<descriptionProps>  = ({ref}) => {
               delivery at up to 4% off grocery
             </p>
             <div ref={ref}>
-            <button  className="cursor-pointer w-1/2 text-green-700 h-9 py-6 px-12 rounded-lg font-semibold flex justify-center items-center bg-white hover:bg-white/90 active:scale-105">
-              About us
-            </button>
+              <button className="cursor-pointer w-1/2 text-green-700 h-9 py-6 px-12 rounded-lg font-semibold flex justify-center items-center bg-white hover:bg-white/90 active:scale-105">
+                About us
+              </button>
             </div>
           </div>
           <img src={fond} className=" w-full object-cover fixed h-95" />
-          <div  className=" absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-black/90 via-black/30 to-transparent " />
+          <div className=" absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-black/90 via-black/30 to-transparent " />
         </div>
       </div>
     </div>

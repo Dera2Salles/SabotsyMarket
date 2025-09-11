@@ -1,6 +1,6 @@
-import { MdDelete, MdEdit } from "react-icons/md";
-import { useDashboardContext } from "../context/useDashboardContext";
-import { Button } from "@/components/ui/button";
+import { MdDelete, MdEdit } from 'react-icons/md';
+import { useDashboardContext } from '../context/useDashboardContext';
+import { Button } from '@/components/ui/button';
 
 interface MenuActionProps {
   productId: string;

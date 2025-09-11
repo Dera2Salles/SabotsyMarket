@@ -1,6 +1,6 @@
-import { MdLock, MdPhone } from "react-icons/md";
-import { useAuthContext } from "../context/useAuthContext";
-import { useNavigate } from "react-router-dom";
+import { MdLock, MdPhone } from 'react-icons/md';
+import { useAuthContext } from '../context/useAuthContext';
+import { useNavigate } from 'react-router-dom';
 
 export const LoginSection = () => {
   const {
@@ -20,7 +20,7 @@ export const LoginSection = () => {
   return (
     <div
       className={`w-1/2 px-10 py-10 flex flex-col items-center justify-center gap-4 transition-all duration-300 ${
-        activeSection === "login" ? "z-10 opacity-100" : "opacity-0"
+        activeSection === 'login' ? 'z-10 opacity-100' : 'opacity-0'
       }`}
     >
       <div className="text-center mb-5">
@@ -63,7 +63,7 @@ export const LoginSection = () => {
       <hr className="w-1/2 border-green-700" />
       <span className="text-sm text-green-700 ">Pas encore de compte ?</span>
       <a
-        onClick={() => setActiveSection("signup")}
+        onClick={() => setActiveSection('signup')}
         className="mt-2 inline-block  text-green-700 hover:underline text-sm "
       >
         Créez un compte

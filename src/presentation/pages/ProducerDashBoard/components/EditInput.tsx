@@ -1,30 +1,26 @@
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
-} from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
+} from '@/components/ui/card';
+import { Label } from '@/components/ui/label';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from '@/components/ui/select';
 
-import { MdCancel } from "react-icons/md";
+import { MdCancel } from 'react-icons/md';
 
-import { useDashboardContext } from "../context/useDashboardContext";
+import { useDashboardContext } from '../context/useDashboardContext';
 
 export const EditInput = () => {
-  const {
-    setProductName,
-    setProductPrice,
-    setProductUnit,
-    closeEditModal,
-  } = useDashboardContext();
+  const { setProductName, setProductPrice, setProductUnit, closeEditModal } =
+    useDashboardContext();
   return (
     <Card className="w-1/3 hover:shadow-2xl shadow-gray-500 transition-all duration-500">
       <CardHeader className=" relative justify-center">
