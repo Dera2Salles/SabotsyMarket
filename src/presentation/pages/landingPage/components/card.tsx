@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
 import {
   Card,
@@ -8,18 +8,19 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import type { ProductEntity } from "@/product/domain/Entity/Product";
+} from '@/components/ui/card';
+import type { ProductEntity } from '@/product/domain/Entity/Product';
 import {
   MdCategory,
   MdMonetizationOn,
   MdProductionQuantityLimits,
   MdShoppingCart,
-} from "react-icons/md";
-import { useProductContext } from "@/presentation/hooks/useProduct";
-import { QuantityControl } from "./quantityControl";
+} from 'react-icons/md';
+import { useProductContext } from '@/presentation/hooks/useProduct';
+import { QuantityControl } from './quantityControl';
 
-import defaut from "@/assets/defaut.jpg";
+import defaut from '@/assets/defaut.jpg';
+import { ApiSource } from '@/core/constant';
 
 interface CardProductProps {
   product: ProductEntity;
@@ -29,12 +30,12 @@ export const CardProduct: React.FC<CardProductProps> = ({ product }) => {
   const bloc = useProductContext();
 
   const productInCart = bloc.productOnOrder?.OrderItems.find(
-    (item) => item.id === product.id
+    (item) => item.id === product.id,
   );
   return (
     <Card
       className={cn(
-        "w-[320px]  hover:shadow-xl transition-all duration-300 transform  "
+        'w-[320px]  hover:shadow-xl transition-all duration-300 transform  ',
       )}
     >
       <CardHeader>
@@ -42,7 +43,7 @@ export const CardProduct: React.FC<CardProductProps> = ({ product }) => {
           <img
             src={
               product.filename
-                ? `http://localhost:5000/product/stream/${product.filename}`
+                ? `${ApiSource.local}/product/stream/${product.filename}`
                 : defaut
             }
             alt={product.name}
@@ -57,28 +58,28 @@ export const CardProduct: React.FC<CardProductProps> = ({ product }) => {
         {product.description}
       </CardDescription>
       <CardContent className=" flex gap-1.5">
-        {" "}
+        {' '}
         <MdCategory className=" text-yellow-500 text-2xl" />
         <div className="flex gap-1 ">
-          {" "}
+          {' '}
           <p className="font-bold">Category : </p>
           <p>{product.category}</p>
         </div>
       </CardContent>
       <CardContent className=" flex gap-1.5">
-        {" "}
+        {' '}
         <MdMonetizationOn className=" text-yellow-500 text-2xl" />
         <div className="flex gap-1 ">
-          {" "}
+          {' '}
           <p className="font-bold">Price : </p>
-          <p>{product.price || "0"}.00 MGA per unit</p>
+          <p>{product.price || '0'}.00 MGA per unit</p>
         </div>
       </CardContent>
       <CardContent className=" flex gap-1.5">
-        {" "}
+        {' '}
         <MdProductionQuantityLimits className=" text-yellow-500 text-2xl" />
         <div className="flex gap-1 ">
-          {" "}
+          {' '}
           <p className="font-bold">Unit : </p>
           <p>{product.unit}</p>
         </div>
