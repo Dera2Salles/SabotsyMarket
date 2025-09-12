@@ -8,6 +8,7 @@ import { useProductContext } from '@/presentation/hooks/useProduct';
 import { QuantityControl } from './quantityControl';
 
 import defaut from '@/assets/defaut.jpg';
+import { ApiSource } from '@/core/constant';
 
 interface CardProductProps {
   product: ProductEntity;
@@ -22,7 +23,7 @@ export const CartRow: React.FC<CardProductProps> = ({ product }) => {
           <img
             src={
               product.filename
-                ? `http://localhost:5000/product/stream/${product.filename}`
+                ? `${ApiSource.local}/product/stream/${product.filename}`
                 : defaut
             }
             alt={product.name}
