@@ -19,7 +19,7 @@ https://sabotsy-market.netlify.app/
 
 ## 🌟 About The Project
 
-**SabotsyMarket** is an e-commerce application designed to bridge the gap between local farmers,and consumers. It provides a beautiful, intuitive, and responsive marketplace for discovering and purchasing local goods.
+**SabotsyMarket** is an e-commerce application designed to bridge the gap between local farmers,and consumers. It provides a beautiful, intuitive discovering and purchasing local goods.
 
 The entire application is built with a focus on clean architecture, scalability, and a high-quality user experience, making the codebase as impressive under the hood as it is on the screen.
 
