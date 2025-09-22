@@ -11,7 +11,7 @@ import {
 import { MdCancel, MdPayment, MdShoppingCart } from 'react-icons/md';
 import { CartRow } from './CartRow';
 import { useProductContext } from '@/presentation/hooks/useProduct';
-import type { ProductEntity } from '@/product/domain/Entity/Product';
+import type { ProductEntity } from '@/features/product/ProductEntity';
 import { useModalContext } from '../context/useModalContext';
 import { ScrollArea } from '@/components/ui/scroll-area';
 

@@ -3,12 +3,11 @@ import {
   MdMonetizationOn,
   MdProductionQuantityLimits,
 } from 'react-icons/md';
-import type { ProductEntity } from '@/product/domain/Entity/Product';
+import type { ProductEntity } from '@/features/product/ProductEntity';
 import { useProductContext } from '@/presentation/hooks/useProduct';
 import { QuantityControl } from './quantityControl';
 
 import defaut from '@/assets/defaut.jpg';
-import { ApiSource } from '@/core/constant';
 
 interface CardProductProps {
   product: ProductEntity;
@@ -21,11 +20,7 @@ export const CartRow: React.FC<CardProductProps> = ({ product }) => {
       <div className=" flex gap-15">
         <div className="flex">
           <img
-            src={
-              product.filename
-                ? `${ApiSource.local}/product/stream/${product.filename}`
-                : defaut
-            }
+            src={product.fileName ? product.fileName : defaut}
             alt={product.name}
             className="size-45 rounded-2xl"
           />

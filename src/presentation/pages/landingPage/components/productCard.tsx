@@ -1,17 +1,14 @@
 import { motion } from 'framer-motion';
 import { useProductContext } from '../../../hooks/useProduct';
-import type { ProductEntity } from '@/product/domain/Entity/Product';
+import type { ProductEntity } from '@/features/product/ProductEntity';
 import { CardProduct } from './card';
 import { MdSearch } from 'react-icons/md';
 import { useIntersectionObserver } from '@/presentation/hooks/useIntersectionObserver';
 
 const buttonItem: { category: string }[] = [
   { category: 'All' },
-  { category: 'Fruits' },
-  { category: 'Épicerie' },
-  { category: 'Boulangerie' },
-  { category: 'Légumes' },
-  { category: 'Produits Laitiers' },
+  { category: 'fruit' },
+  { category: 'legume' },
 ];
 
 export const ProductCardList = () => {

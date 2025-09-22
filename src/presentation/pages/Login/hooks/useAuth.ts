@@ -1,11 +1,11 @@
-import type { LoginDto } from "@/auth/application/loginDto";
-import { loginUseCase } from "@/injection";
-import { useState } from "react";
-import { toast } from "sonner";
+import type { LoginDto } from '@/features/auth/loginDto';
+import { autRepository } from '@/injection';
+import { useState } from 'react';
+import { toast } from 'sonner';
 
 export const useAuth = () => {
-  const [activeSection, setActiveSection] = useState<"login" | "signup">(
-    "login"
+  const [activeSection, setActiveSection] = useState<'login' | 'signup'>(
+    'login',
   );
   const [userIdentifier, setUserIdentifier] = useState<string | null>(null);
   const [userPassword, setUserPassword] = useState<string | null>(null);
@@ -18,13 +18,13 @@ export const useAuth = () => {
   };
 
   const findUser = async (navigate: (path: string) => void) => {
-    const result = await loginUseCase.execute(loginData);
-    if (result.status === "failure")
-      return toast.error("Error", {
-        description: "numberphone or password wrong",
+    const result = await autRepository.logIn(loginData);
+    if (result.status === 'failure')
+      return toast.error('Error', {
+        description: 'numberphone or password wrong',
       });
     setUserName(result.data);
-    navigate("/dashboard");
+    navigate('/dashboard');
   };
 
   return {
