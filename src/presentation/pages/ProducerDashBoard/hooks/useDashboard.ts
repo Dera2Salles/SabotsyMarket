@@ -28,9 +28,8 @@ export const useDashboard = () => {
   const [errorMessage, setErrorMessage] = useState<string>('');
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const limit = 5;
-
   const fetchProduct = async () => {
+    const limit = 5;
     const result = await autRepository.getData(page, limit);
     if (result.status === 'success') {
       if (result.data.product.length == 0) {
