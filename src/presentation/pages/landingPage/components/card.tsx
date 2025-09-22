@@ -9,7 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import type { ProductEntity } from '@/product/domain/Entity/Product';
+import type { ProductEntity } from '@/features/product/ProductEntity';
 import {
   MdCategory,
   MdMonetizationOn,
@@ -20,7 +20,6 @@ import { useProductContext } from '@/presentation/hooks/useProduct';
 import { QuantityControl } from './quantityControl';
 
 import defaut from '@/assets/defaut.jpg';
-import { ApiSource } from '@/core/constant';
 
 interface CardProductProps {
   product: ProductEntity;
@@ -41,11 +40,7 @@ export const CardProduct: React.FC<CardProductProps> = ({ product }) => {
       <CardHeader>
         <div className="relative w-full">
           <img
-            src={
-              product.filename
-                ? `${ApiSource.local}/product/stream/${product.filename}`
-                : defaut
-            }
+            src={product.fileName ? product.fileName : defaut}
             alt={product.name}
             className="w-full h-auto rounded-2xl"
           />

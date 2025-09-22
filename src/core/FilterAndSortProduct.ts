@@ -1,4 +1,4 @@
-import type { ProductEntity } from "../product/domain/Entity/Product";
+import type { ProductEntity } from '../features/product/ProductEntity';
 
 export interface FilterAndSortProductsParams {
   products: ProductEntity[];
