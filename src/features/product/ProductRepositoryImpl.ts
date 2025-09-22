@@ -8,7 +8,6 @@ import type {
   addProductDto,
   ProductServerSource,
 } from './product_remote_data_source';
-import { ApiSource } from '@/core/constant';
 
 export class ProductRepositoryImp implements ProductRepository {
   constructor(private readonly source: ProductServerSource) {}
