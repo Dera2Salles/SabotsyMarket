@@ -55,5 +55,5 @@ To get a local copy up and running, follow these simple steps.
 
 ---
 
-## Todo :
+## Todo 
   - Responsive view for mobile
