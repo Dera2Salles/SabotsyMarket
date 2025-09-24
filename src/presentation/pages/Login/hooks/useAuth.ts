@@ -1,4 +1,4 @@
-import type { LoginDto } from '@/features/auth/loginDto';
+import type { LoginDto } from '@/features/auth/LoginDto';
 import { autRepository } from '@/injection';
 import { useState } from 'react';
 import { toast } from 'sonner';

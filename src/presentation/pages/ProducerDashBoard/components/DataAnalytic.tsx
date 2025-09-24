@@ -1,6 +1,6 @@
-import { BarChartGraph } from './bar_chart';
+import { BarChartGraph } from './BarChart';
 import { CardTable } from './CardTable';
-import { ProductDataTable } from './data_table';
+import { ProductDataTable } from './DataTable';
 
 export const DataAnalytic = () => {
   return (

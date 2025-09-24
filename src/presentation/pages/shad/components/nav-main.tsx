@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { PlusCircleIcon, type LucideIcon } from "lucide-react";
+import { PlusCircleIcon, type LucideIcon } from 'lucide-react';
 
 import {
   SidebarGroup,
@@ -8,8 +8,8 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar";
-import { useProductContext } from "@/presentation/hooks/useProduct";
+} from '@/components/ui/sidebar';
+import { useProductContext } from '@/presentation/context/useProductContext';
 
 export const NavMain = ({
   items,

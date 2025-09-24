@@ -1,8 +1,9 @@
-import { useProductContext } from '@/presentation/hooks/useProduct';
+import { useProductContext } from '@/presentation/context/useProductContext';
 import { MdShoppingCart } from 'react-icons/md';
-import { useModalContext } from '../context/useModalContext';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
+
+import { useModalContext } from '../context/useModalContext';
 
 export const CartIconCounter = () => {
   const { openProductListOnCart } = useModalContext();

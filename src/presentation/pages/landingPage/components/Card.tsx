@@ -1,6 +1,5 @@
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-
 import {
   Card,
   CardContent,
@@ -9,15 +8,16 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import type { ProductEntity } from '@/features/product/ProductEntity';
 import {
   MdCategory,
   MdMonetizationOn,
   MdProductionQuantityLimits,
   MdShoppingCart,
 } from 'react-icons/md';
-import { useProductContext } from '@/presentation/hooks/useProduct';
-import { QuantityControl } from './quantityControl';
+import { QuantityControl } from './QuantityControl';
+
+import type { ProductEntity } from '@/features/product/ProductEntity';
+import { useProductContext } from '@/presentation/context/useProductContext';
 
 import defaut from '@/assets/defaut.jpg';
 

@@ -3,9 +3,10 @@ import {
   MdMonetizationOn,
   MdProductionQuantityLimits,
 } from 'react-icons/md';
+import { QuantityControl } from './QuantityControl';
+
 import type { ProductEntity } from '@/features/product/ProductEntity';
-import { useProductContext } from '@/presentation/hooks/useProduct';
-import { QuantityControl } from './quantityControl';
+import { useProductContext } from '@/presentation/context/useProductContext';
 
 import defaut from '@/assets/defaut.jpg';
 

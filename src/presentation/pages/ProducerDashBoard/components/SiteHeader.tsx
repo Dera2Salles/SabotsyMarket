@@ -1,6 +1,6 @@
 import { Separator } from '@/components/ui/separator';
 import { SidebarTrigger } from '@/components/ui/sidebar';
-import { NavBar } from './navBar';
+import { NavBar } from './NavBar';
 
 export function SiteHeader() {
   return (

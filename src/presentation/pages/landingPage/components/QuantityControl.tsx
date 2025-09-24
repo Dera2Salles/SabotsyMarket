@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
-import type { ProductEntity } from '@/features/product/ProductEntity';
 import { MdAdd, MdRemove } from 'react-icons/md';
+
+import type { ProductEntity } from '@/features/product/ProductEntity';
 
 interface QuantityControlProps {
   quantity: number;

@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion';
-import { useProductContext } from '../../../hooks/useProduct';
-import type { ProductEntity } from '@/features/product/ProductEntity';
-import { CardProduct } from './card';
+import { CardProduct } from './Card';
 import { MdSearch } from 'react-icons/md';
 import { useIntersectionObserver } from '@/presentation/hooks/useIntersectionObserver';
+
+import type { ProductEntity } from '@/features/product/ProductEntity';
+import { useProductContext } from '../../../context/useProductContext';
 
 const buttonItem: { category: string }[] = [
   { category: 'All' },

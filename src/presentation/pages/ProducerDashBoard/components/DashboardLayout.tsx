@@ -1,5 +1,5 @@
-import { AddSection } from "./addSection";
-import { ProductDataTable } from "./data_table";
+import { AddSection } from './AddSection';
+import { ProductDataTable } from './DataTable';
 
 export const DashboardLayout = () => {
   return (

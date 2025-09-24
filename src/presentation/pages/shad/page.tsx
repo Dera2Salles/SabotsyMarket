@@ -1,15 +1,14 @@
-import { AppSidebar } from "../ProducerDashBoard/components/app-sidebar"
-import { ChartAreaInteractive } from "./components/chart-are"
-import { SectionCards } from "./components/section-cards"
-import { SiteHeader } from "../ProducerDashBoard/components/site-header" 
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
-
+import { AppSidebar } from '../ProducerDashBoard/components/AppSidebar';
+import { ChartAreaInteractive } from './components/chart-are';
+import { SectionCards } from './components/section-cards';
+import { SiteHeader } from '../ProducerDashBoard/components/SiteHeader';
+import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
 
 export default function Page() {
   return (
     <SidebarProvider>
       <AppSidebar variant="inset" />
-      <SidebarInset >
+      <SidebarInset>
         <SiteHeader />
         <div className="flex flex-1 flex-col">
           <div className="@container/main flex flex-1 flex-col gap-2">
@@ -23,5 +22,5 @@ export default function Page() {
         </div>
       </SidebarInset>
     </SidebarProvider>
-  )
+  );
 }

@@ -1,11 +1,11 @@
 import { Modal } from '@/components/ui/modal';
 import { useModalContext } from '../context/useModalContext';
-import { Footer } from './footer';
-import { NavBar } from './navBar';
-import { ProductCardList } from './productCard';
-import { ProductListOnCart } from './productListOnCart';
+import { Footer } from './Footer';
+import { NavBar } from './NavBar';
+import { ProductCardList } from './ProductCard';
+import { ProductListOnCart } from './ProductListOnCart';
 import { useScrollLock } from '@/presentation/hooks/useScrollLock';
-import { CartIconCounter } from './cartIconCount';
+import { CartIconCounter } from './CartIconCount';
 
 export const LandingPageLayout = () => {
   const { isProductListOnCartVisible } = useModalContext();

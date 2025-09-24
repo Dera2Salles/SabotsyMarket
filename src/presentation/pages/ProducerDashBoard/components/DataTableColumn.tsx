@@ -14,7 +14,7 @@ import { Button } from '@/components/ui/button';
 // } from "@/components/ui/dropdown-menu";
 
 import type { ProductEntity } from '@/features/product/ProductEntity';
-import { MenuAction } from './menu_action';
+import { MenuAction } from './MenuAction';
 
 export const columns: ColumnDef<ProductEntity>[] = [
   {

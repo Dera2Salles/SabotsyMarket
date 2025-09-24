@@ -13,7 +13,7 @@ import {
 import { useDashboardContext } from "../context/useDashboardContext";
 import { useIntersectionObserver } from "@/presentation/hooks/useIntersectionObserver";
 
-import { columns } from "../components/data_table_column";
+import { columns } from "../components/DataTableColumn";
 
 export const useDataTable = () => {
   const [sorting, setSorting] = React.useState<SortingState>([]);

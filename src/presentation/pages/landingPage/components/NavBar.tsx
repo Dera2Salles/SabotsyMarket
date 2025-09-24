@@ -1,7 +1,7 @@
 import { MdFlashOn, MdPerson2 } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 
-import { Description } from './description';
+import { Description } from './Description';
 import { useIntersection } from '../hooks/useIntersection';
 import { Button } from '@/components/ui/button';
 

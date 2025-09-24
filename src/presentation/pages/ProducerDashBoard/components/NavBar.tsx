@@ -1,5 +1,5 @@
 import { useDashboardContext } from '../context/useDashboardContext';
-import { AvatarProducer } from './avatar';
+import { AvatarProducer } from './Avatar';
 
 export const NavBar = () => {
   const { userName } = useDashboardContext();

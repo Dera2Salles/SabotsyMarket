@@ -8,7 +8,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-import { ImageUploader } from "./imageUploader";
+import { ImageUploader } from "./ImageUploader";
 import { useDashboardContext } from "../context/useDashboardContext";
 import { Button } from "@/components/ui/button";
 import { MdAdd } from "react-icons/md";

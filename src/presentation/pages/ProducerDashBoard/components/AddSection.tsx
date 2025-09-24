@@ -1,4 +1,4 @@
-import { CardWithForm } from "./cardInput";
+import { CardWithForm } from "./CardInput";
 import { CardTable } from "./CardTable";
 
 export const AddSection = () => {

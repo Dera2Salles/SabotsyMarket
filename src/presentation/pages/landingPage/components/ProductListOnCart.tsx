@@ -1,19 +1,18 @@
 import { Button } from '@/components/ui/button';
 import { AttachMoney } from '@mui/icons-material';
-
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
 } from '@/components/ui/card';
-
 import { MdCancel, MdPayment, MdShoppingCart } from 'react-icons/md';
 import { CartRow } from './CartRow';
-import { useProductContext } from '@/presentation/hooks/useProduct';
+import { ScrollArea } from '@/components/ui/scroll-area';
+
+import { useProductContext } from '@/presentation/context/useProductContext';
 import type { ProductEntity } from '@/features/product/ProductEntity';
 import { useModalContext } from '../context/useModalContext';
-import { ScrollArea } from '@/components/ui/scroll-area';
 
 export const ProductListOnCart = () => {
   const { closeProductListOnCart } = useModalContext();

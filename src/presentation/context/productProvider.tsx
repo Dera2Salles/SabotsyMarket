@@ -1,12 +1,12 @@
-import { useProductBloc } from "../bloc/productBloc";
-import { ProductContext } from "./productContext";
+import { useProduct } from '../hooks/useProduct';
+import { ProductContext } from './useProductContext';
 
 export const ProductProvider = ({
   children,
 }: {
   children: React.ReactNode;
 }) => {
-  const bloc = useProductBloc();
+  const bloc = useProduct();
 
   return (
     <ProductContext.Provider value={bloc}> {children}</ProductContext.Provider>

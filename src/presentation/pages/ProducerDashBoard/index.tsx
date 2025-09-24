@@ -1,11 +1,11 @@
-import { DashboardLayout } from "./components/dashboardLayout";
+import { DashboardLayout } from './components/DashboardLayout';
 
-import { AppSidebar } from "./components/app-sidebar";
-import { SiteHeader } from "./components/site-header";
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-import { type JSX } from "react";
-import { DataAnalytic } from "./components/otherPage";
-import { useProductContext } from "@/presentation/hooks/useProduct";
+import { AppSidebar } from './components/AppSidebar';
+import { SiteHeader } from './components/SiteHeader';
+import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
+import { type JSX } from 'react';
+import { DataAnalytic } from './components/DataAnalytic';
+import { useProductContext } from '@/presentation/context/useProductContext';
 
 export const ProducerDashboardPage = () => {
   const page: JSX.Element[] = [<DashboardLayout />, <DataAnalytic />];
