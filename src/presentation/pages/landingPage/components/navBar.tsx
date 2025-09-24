@@ -23,7 +23,7 @@ export const NavBar = () => {
               </div>
             </div>
             <div className="flex flex-row gap-2 justify-center items-center ">
-              <div className=" text-white font-semibold flex flex-row gap-1 ">
+              <div className=" text-white font-semibold md:flex flex-row gap-1 hidden">
                 <MdFlashOn className=" text-yellow-500 text-xl" />
                 <p>Order now and get it within {'   '}</p>{' '}
                 <p className=" text-yellow-500 font-semibold"> 15 min!</p>

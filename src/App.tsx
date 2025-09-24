@@ -6,7 +6,7 @@ import { DashboardProvider } from "./presentation/pages/ProducerDashBoard/contex
 
 const App = () => {
   return (
-    <div className=" bg-zinc-100 h-full">
+    <div className=" bg-zinc-100 h-full overflow-x-hidden">
     
       <AuthProvider>
         <ProductProvider>

@@ -23,13 +23,13 @@ export const ProductCardList = () => {
 
   return (
     <>
-      <div className=" -translate-y-7  bg-zinc-100 z-10 rounded-t-4xl  px-6 py-6 flex flex-col justify-center ">
+      <div className=" -translate-y-7  bg-zinc-100 z-10 rounded-t-4xl md:p-6  px-1 py-1 flex flex-col justify-center ">
         <div className=" flex flex-col pb-6 ">
           <div className=" flex flex-row justify-between  items-center gap-4 ">
-            <p className="  font-bold text-green-700 lg:text-4xl sm:text-4xl">
+            <p className=" hidden md:flex font-bold text-green-700 lg:text-4xl text-lg">
               Featured product
             </p>
-            <div className=" translate-x-20  relative flex justify-between items-center w-1/7 ">
+            <div className=" translate-x-20  relative md:flex hidden justify-between items-center w-1/7 ">
               <input
                 onChange={(e) => bloc.setSearch(e.target.value)}
                 placeholder="Search your favorite food "
@@ -37,7 +37,7 @@ export const ProductCardList = () => {
               />
               <MdSearch className="absolute right-4  top-1/2 -translate-y-1/2 text-gray-400 text-3xl" />
             </div>
-            <div className=" flex flex-row justify-end gap-3 ">
+            <div className="flex w-full md:w-auto pt-5 md:pt-0  justify-center gap-3 ">
               {buttonItem.map((item, key) => (
                 <button
                   onClick={() => bloc.setFilterCategory(item.category)}
@@ -49,7 +49,7 @@ export const ProductCardList = () => {
                   }`}
                 >
                   <p
-                    className={`font-semibold px-4 py-2 text-xl ${
+                    className={`font-semibold px-3 py-1 md:px-4 md:py-2 text-xl ${
                       bloc.filterCategory === item.category
                         ? 'text-white'
                         : 'text-green-700 hover:text-white'
@@ -62,7 +62,7 @@ export const ProductCardList = () => {
             </div>
           </div>
         </div>
-        <div className=" w-full flex flex-wrap gap-15">
+        <div className=" w-full flex md:flex-row flex-col justify-center items-center flex-wrap gap-5 md:gap-15">
           {productList.length == 0 ? (
             <p className=" text-gray-500 text-6xl flex justify-center w-full py-12 font-semibold">
               No result

@@ -34,7 +34,7 @@ export const CardProduct: React.FC<CardProductProps> = ({ product }) => {
   return (
     <Card
       className={cn(
-        'w-[320px]  hover:shadow-xl transition-all duration-300 transform  ',
+        'w-[350px] md:w-[320px]  hover:shadow-xl transition-all duration-300 transform  ',
       )}
     >
       <CardHeader>
