@@ -7,7 +7,7 @@ import { failure, success } from '../../core/Types/Result';
 import type {
   addProductDto,
   ProductServerSource,
-} from './product_remote_data_source';
+} from './ProductRemoteDataSource';
 
 export class ProductRepositoryImp implements ProductRepository {
   constructor(private readonly source: ProductServerSource) {}

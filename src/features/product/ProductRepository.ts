@@ -1,6 +1,6 @@
 import type { Result } from '../../core/Types/Result';
 import type { ProductEntity } from './ProductEntity';
-import type { addProductDto } from '@/features/product/product_remote_data_source';
+import type { addProductDto } from '@/features/product/ProductRemoteDataSource';
 
 export abstract class ProductRepository {
   abstract add(product: ProductEntity[]): Promise<Result<void>>;

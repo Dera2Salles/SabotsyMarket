@@ -2,7 +2,7 @@ import type { UserEntity } from '@/features/auth/UserEntity';
 import type { AxiosInstance } from 'axios';
 import type { UserData } from '@/features/auth/AuthRepository';
 import { ApiSource } from '@/core/constant';
-import type { LoginDto } from './loginDto';
+import type { LoginDto } from './LoginDto';
 
 export abstract class AuthService {
   abstract logIn(loginData: LoginDto): Promise<string>;

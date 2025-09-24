@@ -1,6 +1,6 @@
 import type { Result } from '@/core/Types/Result';
 import type { UserEntity } from './UserEntity';
-import type { LoginDto } from '@/features/auth/loginDto';
+import type { LoginDto } from '@/features/auth/LoginDto';
 import type { ProductEntity } from '@/features/product/ProductEntity';
 
 export interface UserData {

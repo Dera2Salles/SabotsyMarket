@@ -1,5 +1,5 @@
 import type { RESULT } from '@/core/Types';
-import type { OrderServerSource } from './order_server';
+import type { OrderServerSource } from './OrderServerSource';
 import { OrderModel } from './OrderModel';
 import { failure, success } from '@/core/Types/Result';
 import type { ProductEntity } from '@/features/product/ProductEntity';

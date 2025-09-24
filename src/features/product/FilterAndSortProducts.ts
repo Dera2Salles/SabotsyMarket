@@ -1,6 +1,6 @@
-import type { ProductEntity } from "@/product/domain/Entity/Product";
 import { leveinshtein_distance } from "@/core/utils/leveinshtein";
 import type { FilterAndSortProductsParams } from "@/core/FilterAndSortProduct";
+import type { ProductEntity } from "./ProductEntity";
 
 export const filter = ({
   products,

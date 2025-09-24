@@ -3,7 +3,13 @@ import type {
   addProductDto,
   InsertReturnType,
   ProductServerSource,
-} from './product_remote_data_source';
+} from './ProductRemoteDataSource';
+
+import apple from '@/assets/apple.jpg';
+import banana from '@/assets/banana.jpg';
+import ognion from '@/assets/ognion.jpg';
+import tomate from '@/assets/tomate.jpg';
+import chouFleur from '@/assets/chouFleur.jpg';
 
 export class MemoryStorage implements ProductServerSource {
   private product: ProductEntity[] = [
@@ -15,6 +21,7 @@ export class MemoryStorage implements ProductServerSource {
       name: 'Tomate',
       category: 'legume',
       description: 'Fraîches et bonnes pour la santé',
+      fileName: tomate,
     },
     {
       id: '2',
@@ -24,60 +31,37 @@ export class MemoryStorage implements ProductServerSource {
       name: 'Pomme',
       category: 'fruit',
       description: 'Pommes croquantes de saison',
+      fileName: apple,
     },
     {
       id: '3',
       producerId: '2',
       price: 1500,
       unit: 60,
-      name: 'Carotte',
+      name: 'Ognion',
       category: 'legume',
-      description: 'Carottes biologiques riches en vitamines',
+      description: 'Ognion biologiques riches en vitamines',
+      fileName: ognion,
     },
     {
       id: '4',
       producerId: '4',
       price: 4500,
       unit: 15,
-      name: 'Avocat',
+      name: 'Banana',
       category: 'fruit',
-      description: 'Avocats crémeux et mûrs à point',
+      description: 'Banana crémeux et mûrs à point',
+      fileName: banana,
     },
     {
       id: '5',
-      producerId: '1',
-      price: 1200,
-      unit: 80,
-      name: 'Oignon',
-      category: 'legume',
-      description: 'Oignons jaunes parfaits pour la cuisine',
-    },
-    {
-      id: '6',
       producerId: '5',
-      price: 3500,
-      unit: 30,
-      name: 'Poivron',
+      price: 4500,
+      unit: 15,
+      name: 'Chou Fleur',
       category: 'legume',
-      description: 'Poivrons colorés et sucrés',
-    },
-    {
-      id: '7',
-      producerId: '3',
-      price: 2800,
-      unit: 20,
-      name: 'Banane',
-      category: 'fruit',
-      description: 'Bananes issues du commerce équitable',
-    },
-    {
-      id: '8',
-      producerId: '2',
-      price: 1800,
-      unit: 50,
-      name: 'Salade',
-      category: 'legume',
-      description: 'Laitue fraîche et croquante',
+      description: 'Chou fleur à point',
+      fileName: chouFleur,
     },
   ]; // Fake Data
 
