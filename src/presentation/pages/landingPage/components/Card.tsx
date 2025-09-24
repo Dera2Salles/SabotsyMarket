@@ -17,7 +17,7 @@ import {
 import { QuantityControl } from './QuantityControl';
 
 import type { ProductEntity } from '@/features/product/ProductEntity';
-import { useProductContext } from '@/presentation/context/useProductContext';
+import { useProductContext } from '@/presentation/pages/landingPage/context/useProductContext';
 
 import defaut from '@/assets/defaut.jpg';
 

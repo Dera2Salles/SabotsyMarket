@@ -10,7 +10,7 @@ import { MdCancel, MdPayment, MdShoppingCart } from 'react-icons/md';
 import { CartRow } from './CartRow';
 import { ScrollArea } from '@/components/ui/scroll-area';
 
-import { useProductContext } from '@/presentation/context/useProductContext';
+import { useProductContext } from '@/presentation/pages/landingPage/context/useProductContext';
 import type { ProductEntity } from '@/features/product/ProductEntity';
 import { useModalContext } from '../context/useModalContext';
 

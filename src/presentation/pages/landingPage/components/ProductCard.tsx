@@ -4,7 +4,7 @@ import { MdSearch } from 'react-icons/md';
 import { useIntersectionObserver } from '@/presentation/hooks/useIntersectionObserver';
 
 import type { ProductEntity } from '@/features/product/ProductEntity';
-import { useProductContext } from '../../../context/useProductContext';
+import { useProductContext } from '../context/useProductContext';
 
 const buttonItem: { category: string }[] = [
   { category: 'All' },

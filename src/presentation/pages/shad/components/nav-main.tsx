@@ -9,7 +9,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import { useProductContext } from '@/presentation/context/useProductContext';
+import { useProductContext } from '@/presentation/pages/landingPage/context/useProductContext';
 
 export const NavMain = ({
   items,

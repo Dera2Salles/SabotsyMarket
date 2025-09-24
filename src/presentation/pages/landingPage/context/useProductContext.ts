@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 
 import { createContext } from 'react';
-import { useProduct } from '../hooks/useProduct';
+import type { useProduct } from '../hooks/useProduct';
 
 export const ProductContext = createContext<ReturnType<
   typeof useProduct

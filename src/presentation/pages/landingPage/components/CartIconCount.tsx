@@ -1,4 +1,4 @@
-import { useProductContext } from '@/presentation/context/useProductContext';
+import { useProductContext } from '@/presentation/pages/landingPage/context/useProductContext';
 import { MdShoppingCart } from 'react-icons/md';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';

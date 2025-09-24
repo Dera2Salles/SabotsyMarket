@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
-import { toast } from 'sonner';
 import { debounce } from 'lodash';
 
 import type { ProductEntity } from '@/features/product/ProductEntity';
 import type { OrderEntity } from '@/features/order/Order';
 
-import { orderRepository, productRepository } from '@/injection';
-
 import { filter } from '@/features/product/FilterAndSortProducts';
+import { confirmOrderService } from '../services/ConfirmOrder';
+import { fetchProductService } from '../services/FetchProduct';
+import { addProductToTheOrderService } from '../services/AddProductToTheOrderService';
+import { removeProductToTheOrderService } from '../services/RemoveProductToTheOrderService';
 
 export const useProduct = () => {
   const [index, setIndex] = useState<number>(0);
@@ -29,56 +30,27 @@ export const useProduct = () => {
   const limit = 5;
 
   const confirmOrder = async () => {
-    const result = await orderRepository.confirmOrder();
-    if (result.status === 'success') {
-      toast.success('Succes', {
-        description: 'Order confirmed',
-        className: 'animate-fade animate-once animate-ease-out',
-      });
-    } else {
-      toast.error('Error', {
-        description: 'error on order confirmation',
-      });
-    }
+    await confirmOrderService();
   };
 
   const fetchProduct = async () => {
-    const result = await productRepository.getAll(page, limit);
-    if (result.status === 'success') {
-      if (result.data.length == 0) {
-        setHasReachedMax(true);
-      } else {
-        setProductList((product) => [...product, ...result.data]);
-        setPage((prev) => prev + 1);
-      }
+    const product = await fetchProductService({ page, limit });
+    if (product) {
+      setProductList(product);
+      setPage((page) => page + 1);
     } else {
-      toast.error('Error', {
-        description: 'Failed to fetch products',
-      });
+      setHasReachedMax(true);
     }
   };
 
-  const getProductOnOrderItems = (): ProductEntity[] => {
-    return productOnOrder?.OrderItems as ProductEntity[];
-  };
-
-
   const addProducToTheOrder = async (product: ProductEntity) => {
-    const result = await orderRepository.addProductToTheOrder(product);
-    if (result.status === 'failure')
-      return toast.error('Error', {
-        description: 'Failed to add product in order',
-      });
-    setProductOnOrder(result.data);
+    const result = await addProductToTheOrderService({ product });
+    if (result) setProductOnOrder(result);
   };
 
   const removeProducToTheOrder = async (product: ProductEntity) => {
-    const result = await orderRepository.removeProductToTheOrder(product);
-    if (result.status === 'failure')
-      return toast.error('Error', {
-        description: 'Failed to add product in order',
-      });
-    setProductOnOrder(result.data);
+    const result = await removeProductToTheOrderService({ product });
+    if (result) setProductOnOrder(result);
   };
 
   useEffect(() => {
@@ -106,7 +78,6 @@ export const useProduct = () => {
     fetchProduct,
     addProducToTheOrder,
     productOnOrder,
-    getProductOnOrderItems,
     productListFiltered,
     setFilterCategory,
     setSearch,
