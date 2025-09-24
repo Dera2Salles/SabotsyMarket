@@ -3,8 +3,8 @@ import { AuthRepositoryImpl } from './features/auth/AuthRepositoryImpl';
 import { MemoryStorage } from './features/product/productMemoryStorage';
 
 import axios from 'axios';
-import { OrderRemoteDataSourceImpl } from './features/order/order_server';
-import { AuthServiceImpl } from './features/auth/auth_service';
+import { OrderRemoteDataSourceImpl } from './features/order/OrderServerSource';
+import { AuthServiceImpl } from './features/auth/AuthService';
 import { OrderRepositoryImpl } from './features/order/OrderRepositoryImpl';
 
 const api = axios.create({
