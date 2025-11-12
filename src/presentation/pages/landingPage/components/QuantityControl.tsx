@@ -21,7 +21,6 @@ export const QuantityControl: React.FC<QuantityControlProps> = ({
 
   return (
     <div className="flex items-center justify-between gap-4 w-full">
-      {/* Bouton diminuer */}
       <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
         <Button
           size="icon"
@@ -33,7 +32,6 @@ export const QuantityControl: React.FC<QuantityControlProps> = ({
         </Button>
       </motion.div>
 
-      {/* Affichage de la quantité */}
       <div className="relative flex-1">
         <AnimatePresence mode="popLayout">
           <motion.div
@@ -55,7 +53,6 @@ export const QuantityControl: React.FC<QuantityControlProps> = ({
           </motion.div>
         </AnimatePresence>
 
-        {/* Indicateur de stock maximum */}
         {isMaxQuantity && (
           <motion.div
             initial={{ opacity: 0, y: -5 }}
@@ -69,7 +66,6 @@ export const QuantityControl: React.FC<QuantityControlProps> = ({
         )}
       </div>
 
-      {/* Bouton augmenter */}
       <motion.div
         whileHover={{ scale: isMaxQuantity ? 1 : 1.02 }}
         whileTap={{ scale: isMaxQuantity ? 1 : 0.98 }}
