@@ -1,12 +1,6 @@
 import { Button } from '@/components/ui/button';
+import { Card, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
 import { MdShoppingCart } from 'react-icons/md';
 import { QuantityControl } from './QuantityControl';
 
