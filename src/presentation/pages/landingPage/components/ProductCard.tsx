@@ -1,7 +1,7 @@
-import { motion } from 'framer-motion';
-import { CardProduct } from './Card';
-import { MdSearch } from 'react-icons/md';
 import { useIntersectionObserver } from '@/presentation/hooks/useIntersectionObserver';
+import { motion } from 'framer-motion';
+import { MdSearch } from 'react-icons/md';
+import { CardProduct } from './Card';
 
 import type { ProductEntity } from '@/features/product/ProductEntity';
 import { useProductContext } from '../context/useProductContext';
@@ -23,13 +23,16 @@ export const ProductCardList = () => {
   });
 
   return (
-    <div className="bg-gray-50 py-12">
+    <div
+      className="bg-gray-50 dark:bg-zinc-800 py-12 transition-all duration-500"
+      id="productList"
+    >
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-extrabold text-green-800">
+          <h2 className="text-4xl font-extrabold text-green-800 dark:text-amber-100 transition-all duration-500">
             Our Fresh Products
           </h2>
-          <p className="text-gray-600 mt-2">
+          <p className="text-gray-600 dark:text-gray-300 mt-2 transition-all duration-500">
             Discover a variety of fresh and organic products from local farmers.
           </p>
         </div>
@@ -61,7 +64,7 @@ export const ProductCardList = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {productList.length === 0 ? (
             <div className="col-span-full text-center py-12">
-              <p className="text-gray-500 text-2xl font-semibold">
+              <p className="text-gray-500 text-2xl font-semibold dark:text-gray-300 transition-all duration-500">
                 No products found.
               </p>
             </div>

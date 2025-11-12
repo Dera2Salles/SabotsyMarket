@@ -1,12 +1,15 @@
-import { LandingPageLayout } from "./components/LandingPageLayout";
-import { Modalprovider } from "./context/useModalProvider";
+import { ThemeProvider } from '@/presentation/theme/useThemeProvider';
+import { LandingPageLayout } from './components/LandingPageLayout';
+import { Modalprovider } from './context/useModalProvider';
 
 export const LandingPage = () => {
   return (
     <>
-      <Modalprovider>
-        <LandingPageLayout />
-      </Modalprovider>
+      <ThemeProvider>
+        <Modalprovider>
+          <LandingPageLayout />
+        </Modalprovider>
+      </ThemeProvider>
     </>
   );
 };

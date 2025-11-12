@@ -1,5 +1,7 @@
 import fond from '@/assets/grocery.jpg';
 
+import { Link } from 'react-scroll';
+
 interface descriptionProps {
   ref: React.RefObject<HTMLDivElement | null>;
 }
@@ -24,9 +26,17 @@ export const Description: React.FC<descriptionProps> = ({ ref }) => {
           Get organic produce and sustainably sourced groceries delivered at up
           to 4% off grocery.
         </p>
-        <button className="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 animate-fade-in-up">
-          Shop Now
-        </button>
+        <Link
+          to="productList"
+          spy={true}
+          smooth={true}
+          offset={-50}
+          duration={500}
+        >
+          <button className="bg-green-600 hover:bg-green-700 cursor-pointer text-white font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 animate-fade-in-up">
+            Shop Now
+          </button>
+        </Link>
       </div>
     </div>
   );

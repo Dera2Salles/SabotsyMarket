@@ -1,12 +1,16 @@
 import { MdFlashOn, MdPerson2 } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 
-import { Description } from './Description';
-import { useIntersection } from '../hooks/useIntersection';
 import { Button } from '@/components/ui/button';
+import { useThemeContext } from '@/presentation/theme/useThemeContext';
+import { Moon, Sun } from 'lucide-react';
+import { useIntersection } from '../hooks/useIntersection';
+import { Description } from './Description';
 
 export const NavBar = () => {
   const { ref, isVisible } = useIntersection();
+  const { toggleTheme, isDark } = useThemeContext();
+
   return (
     <>
       <header
@@ -35,11 +39,17 @@ export const NavBar = () => {
                 <Button
                   size="icon"
                   variant="outline"
-                  className="rounded-full size-10 cursor-pointer bg-white text-green-700 hover:bg-gray-100 transition-all duration-300"
+                  className="rounded-full size-10 cursor-pointer bg-white dark:bg-white text-green-700 hover:bg-gray-100 transition-all duration-300"
                 >
                   <MdPerson2 className="text-2xl" />
                 </Button>
               </Link>
+              <button
+                className="px-5 text-white cursor-pointer"
+                onClick={toggleTheme}
+              >
+                {isDark ? <Sun /> : <Moon />}
+              </button>
             </div>
           </div>
         </div>

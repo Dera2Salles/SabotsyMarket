@@ -22,7 +22,7 @@ export const CardProduct: React.FC<CardProductProps> = ({ product }) => {
   return (
     <Card
       className={cn(
-        'w-[350px] md:w-[320px] rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border-2 border-green-100',
+        'w-[350px] md:w-[320px]  dark:bg-zinc-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl  transition-all duration-500 transform hover:-translate-y-1 border-2 dark:border-1 dark:border-zinc-500 border-green-100',
       )}
     >
       <CardHeader className="p-0">
@@ -34,16 +34,20 @@ export const CardProduct: React.FC<CardProductProps> = ({ product }) => {
           />
         </div>
       </CardHeader>
-      <div className="p-4 bg-white">
-        <CardTitle className="text-2xl font-bold text-green-800 mb-2">
+      <div className="p-4 bg-white dark:bg-zinc-800 transition-all duration-500">
+        <CardTitle className="text-2xl font-bold text-green-800 dark:text-amber-100 transition-all duration-500 mb-2">
           {product.name}
         </CardTitle>
-        <p className="text-gray-600 text-sm mb-4">{product.description}</p>
+        <p className="text-gray-600 dark:text-gray-300 transition-all duration-500 text-sm mb-4">
+          {product.description}
+        </p>
         <div className="flex justify-between items-center mb-4">
-          <p className="text-lg font-semibold text-green-600">
+          <p className="text-lg font-semibold text-green-600 ">
             {product.price || '0'}.00 MGA
           </p>
-          <p className="text-sm text-gray-500">Stock: {product.unit}</p>
+          <p className="text-sm text-gray-500 dark:text-gray-300 transition-all duration-500">
+            Stock: {product.unit}
+          </p>
         </div>
         <CardFooter className="p-0">
           <div className="w-full">
