@@ -3,17 +3,11 @@ import { cn } from '@/lib/utils';
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import {
-  MdCategory,
-  MdMonetizationOn,
-  MdProductionQuantityLimits,
-  MdShoppingCart,
-} from 'react-icons/md';
+import { MdShoppingCart } from 'react-icons/md';
 import { QuantityControl } from './QuantityControl';
 
 import type { ProductEntity } from '@/features/product/ProductEntity';
@@ -34,74 +28,53 @@ export const CardProduct: React.FC<CardProductProps> = ({ product }) => {
   return (
     <Card
       className={cn(
-        'w-[350px] md:w-[320px]  hover:shadow-xl transition-all duration-300 transform  ',
+        'w-[350px] md:w-[320px] rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border-2 border-green-100',
       )}
     >
-      <CardHeader>
-        <div className="relative w-full">
+      <CardHeader className="p-0">
+        <div className="relative w-full h-48">
           <img
             src={product.fileName ? product.fileName : defaut}
             alt={product.name}
-            className="w-full h-auto rounded-2xl"
+            className="w-full h-full object-cover"
           />
         </div>
       </CardHeader>
-      <CardTitle className="flex justify-center text-xl">
-        {product.name}
-      </CardTitle>
-      <CardDescription className=" pl-8 flex justify-center text-lg">
-        {product.description}
-      </CardDescription>
-      <CardContent className=" flex gap-1.5">
-        {' '}
-        <MdCategory className=" text-yellow-500 text-2xl" />
-        <div className="flex gap-1 ">
-          {' '}
-          <p className="font-bold">Category : </p>
-          <p>{product.category}</p>
+      <div className="p-4 bg-white">
+        <CardTitle className="text-2xl font-bold text-green-800 mb-2">
+          {product.name}
+        </CardTitle>
+        <p className="text-gray-600 text-sm mb-4">{product.description}</p>
+        <div className="flex justify-between items-center mb-4">
+          <p className="text-lg font-semibold text-green-600">
+            {product.price || '0'}.00 MGA
+          </p>
+          <p className="text-sm text-gray-500">Stock: {product.unit}</p>
         </div>
-      </CardContent>
-      <CardContent className=" flex gap-1.5">
-        {' '}
-        <MdMonetizationOn className=" text-yellow-500 text-2xl" />
-        <div className="flex gap-1 ">
-          {' '}
-          <p className="font-bold">Price : </p>
-          <p>{product.price || '0'}.00 MGA per unit</p>
-        </div>
-      </CardContent>
-      <CardContent className=" flex gap-1.5">
-        {' '}
-        <MdProductionQuantityLimits className=" text-yellow-500 text-2xl" />
-        <div className="flex gap-1 ">
-          {' '}
-          <p className="font-bold">Unit : </p>
-          <p>{product.unit}</p>
-        </div>
-      </CardContent>
-      <CardFooter className="flex flex-row justify-center items-center">
-        <div className=" flex justify-center w-full ">
-          {productInCart ? (
-            <QuantityControl
-              item={product}
-              quantity={productInCart.unitOnCart as number}
-              onIncrease={() => bloc.addProducToTheOrder(product)}
-              onDecrease={() => {
-                bloc.removeProducToTheOrder(product);
-              }}
-            />
-          ) : (
-            <Button
-              className="w-1/2 cursor-pointer bg-green-700 hover:bg-green-900 rounded-2xl"
-              onClick={() => {
-                bloc?.addProducToTheOrder(product);
-              }}
-            >
-              <MdShoppingCart /> Add to cart
-            </Button>
-          )}
-        </div>
-      </CardFooter>
+        <CardFooter className="p-0">
+          <div className="w-full">
+            {productInCart ? (
+              <QuantityControl
+                item={product}
+                quantity={productInCart.unitOnCart as number}
+                onIncrease={() => bloc.addProducToTheOrder(product)}
+                onDecrease={() => {
+                  bloc.removeProducToTheOrder(product);
+                }}
+              />
+            ) : (
+              <Button
+                className="w-full cursor-pointer bg-green-700 hover:bg-green-800 rounded-lg text-white font-semibold py-2 transition-all duration-300 flex items-center justify-center gap-2"
+                onClick={() => {
+                  bloc?.addProducToTheOrder(product);
+                }}
+              >
+                <MdShoppingCart className="text-xl" /> Add to cart
+              </Button>
+            )}
+          </div>
+        </CardFooter>
+      </div>
     </Card>
   );
 };

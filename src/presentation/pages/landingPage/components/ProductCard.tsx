@@ -23,66 +23,64 @@ export const ProductCardList = () => {
   });
 
   return (
-    <>
-      <div className=" -translate-y-7  bg-zinc-100 z-10 rounded-t-4xl md:p-6  px-1 py-1 flex flex-col justify-center ">
-        <div className=" flex flex-col pb-6 ">
-          <div className=" flex flex-row justify-between  items-center gap-4 ">
-            <p className=" hidden md:flex font-bold text-green-700 lg:text-4xl text-lg">
-              Featured product
-            </p>
-            <div className=" translate-x-20  relative md:flex hidden justify-between items-center w-1/7 ">
-              <input
-                onChange={(e) => bloc.setSearch(e.target.value)}
-                placeholder="Search your favorite food "
-                className="  border-green-700 shadow-xl  h-12 w-full pl-4 pr-11 placeholder:text-sm   text-lg border-1 bg-white rounded-4xl focus:outline-none  focus:border-green-700 focus:ring-1 focus:ring-green-900  transition-all duration-300"
-              />
-              <MdSearch className="absolute right-4  top-1/2 -translate-y-1/2 text-gray-400 text-3xl" />
-            </div>
-            <div className="flex w-full md:w-auto pt-5 md:pt-0  justify-center gap-3 ">
-              {buttonItem.map((item, key) => (
-                <button
-                  onClick={() => bloc.setFilterCategory(item.category)}
-                  key={key}
-                  className={`flex cursor-pointer justify-center border border-green-700 rounded-4xl transition-all duration-100 ${
-                    bloc.filterCategory === item.category
-                      ? 'bg-green-700'
-                      : 'bg-white hover:bg-green-700'
-                  }`}
-                >
-                  <p
-                    className={`font-semibold px-3 py-1 md:px-4 md:py-2 text-xl ${
-                      bloc.filterCategory === item.category
-                        ? 'text-white'
-                        : 'text-green-700 hover:text-white'
-                    }`}
-                  >
-                    {item.category}
-                  </p>
-                </button>
-              ))}
-            </div>
+    <div className="bg-gray-50 py-12">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-extrabold text-green-800">
+            Our Fresh Products
+          </h2>
+          <p className="text-gray-600 mt-2">
+            Discover a variety of fresh and organic products from local farmers.
+          </p>
+        </div>
+        <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
+          <div className="relative w-full md:w-1/3">
+            <input
+              onChange={(e) => bloc.setSearch(e.target.value)}
+              placeholder="Search for your favorite food..."
+              className="w-full h-12 pl-12 pr-4 text-lg border-2 border-gray-200 rounded-full focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all duration-300"
+            />
+            <MdSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-2xl" />
+          </div>
+          <div className="flex gap-3">
+            {buttonItem.map((item, key) => (
+              <button
+                onClick={() => bloc.setFilterCategory(item.category)}
+                key={key}
+                className={`px-4 py-2 text-lg font-semibold rounded-full transition-all duration-300 ${
+                  bloc.filterCategory === item.category
+                    ? 'bg-green-700 text-white shadow-md'
+                    : 'bg-white text-green-700 border-2 border-green-700 hover:bg-green-700 hover:text-white'
+                }`}
+              >
+                {item.category}
+              </button>
+            ))}
           </div>
         </div>
-        <div className=" w-full flex md:flex-row flex-col justify-center items-center flex-wrap gap-5 md:gap-15">
-          {productList.length == 0 ? (
-            <p className=" text-gray-500 text-6xl flex justify-center w-full py-12 font-semibold">
-              No result
-            </p>
-          ) : null}
-          {productList?.map((item, key) => (
-            <motion.div
-              key={key}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              whileHover={{ scale: 1.02 }}
-            >
-              <CardProduct product={item} key={key} />
-            </motion.div>
-          ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          {productList.length === 0 ? (
+            <div className="col-span-full text-center py-12">
+              <p className="text-gray-500 text-2xl font-semibold">
+                No products found.
+              </p>
+            </div>
+          ) : (
+            productList?.map((item, key) => (
+              <motion.div
+                key={key}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: key * 0.1 }}
+                whileHover={{ scale: 1.05 }}
+              >
+                <CardProduct product={item} key={key} />
+              </motion.div>
+            ))
+          )}
         </div>
       </div>
       <div ref={observerRef} className="h-1 w-full" />
-    </>
+    </div>
   );
 };
