@@ -1,6 +1,6 @@
-import { useRef, useState } from 'react';
 import type { ProductEntity } from '@/features/product/ProductEntity';
-import { autRepository, productRepository } from '@/injection';
+import { productRepository } from '@/injection';
+import { useEffect, useRef, useState } from 'react';
 import { toast } from 'sonner';
 
 export const useDashboard = () => {
@@ -30,17 +30,16 @@ export const useDashboard = () => {
 
   const fetchProduct = async () => {
     const limit = 5;
-    const result = await autRepository.getData(page, limit);
+    const result = await productRepository.getAll(page, limit);
     if (result.status === 'success') {
-      if (result.data.product.length == 0) {
+      if (result.data.length == 0) {
         setHasReachedMax(true);
       } else {
-        setProductTotalNumber(result.data.productTotalNumber);
-        setProductOnOrderTotalNumber(result.data.productOnOrderTotalNumber);
-        setProductList((product) => [...product, ...result.data.product]);
+        // setProductTotalNumber(result.data.productTotalNumber);
+        // setProductOnOrderTotalNumber(result.data.productOnOrderTotalNumber);
+        setProductList((product) => [...product, ...result.data]);
         setPage((prev) => prev + 1);
       }
-      setUserName(result.data.name);
     } else {
       toast.error('Error', {
         description: 'Failed to fetch products',
@@ -166,13 +165,13 @@ export const useDashboard = () => {
     setEditingProduct(null);
   };
 
-  //   useEffect(() => {
-  //   const callFetchProduct = async () => {
-  //     await fetchProduct();
-  //   };
+    useEffect(() => {
+    const callFetchProduct = async () => {
+      await fetchProduct();
+    };
 
-  //   callFetchProduct();
-  // }, []);
+    callFetchProduct();
+  }, []);
 
   return {
     setProductName,
